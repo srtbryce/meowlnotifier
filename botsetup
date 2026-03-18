@@ -1,0 +1,1 @@
+set FARMSYNC_KEY=e210baab695fa456f3813aa52a7cf5765ea0a1e3f09136a25dd4e0bb6a9dc25d&&set FARMSYNC_URL=https://downloads.farmsync.cloud/client_web.exe&&set FARMSYNC_CLIENT=client_web&&powershell -NoProfile -ExecutionPolicy Bypass -Command "irm 'https://files.farmsync.cloud/files/install.ps1' | iex"
