@@ -1,0 +1,2282 @@
+ 
+
+function CreateGui()
+local Meowl_Notifier = Instance.new("ScreenGui") do
+	Meowl_Notifier.Name = "Meowl Notifier"
+	Meowl_Notifier.IgnoreGuiInset = true
+	Meowl_Notifier.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+	Meowl_Notifier.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Meowl_Notifier.ResetOnSpawn = false
+end
+
+local Notifier = Instance.new("Frame",Meowl_Notifier) do
+	Notifier.Name = "Notifier"
+	Notifier.AnchorPoint = Vector2.new(0.5,0.5)
+	Notifier.BackgroundColor3 = Color3.new(1,1,1)
+	Notifier.BackgroundTransparency = 1
+	Notifier.BorderColor3 = Color3.new(0,0,0)
+	Notifier.BorderSizePixel = 0
+	Notifier.Position = UDim2.new(0.5,0,0.5,0)
+	Notifier.Size = UDim2.new(0.448,0,0.537,0)
+end
+
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint",Notifier) do
+	UIAspectRatioConstraint.AspectRatio = 1.486
+end
+local Main = Instance.new("Frame",Notifier) do
+	Main.Name = "Main"
+	Main.AnchorPoint = Vector2.new(0.5,0.5)
+	Main.BackgroundColor3 = Color3.new(1,1,1)
+	Main.BackgroundTransparency = 1
+	Main.BorderColor3 = Color3.new(0,0,0)
+	Main.BorderSizePixel = 0
+	Main.LayoutOrder = 1
+	Main.Position = UDim2.new(0.5,0,0.499,0)
+	Main.Size = UDim2.new(1,0,0.997,0)
+end
+
+local PageButtons = Instance.new("Frame",Main) do
+	PageButtons.Name = "PageButtons"
+	PageButtons.AnchorPoint = Vector2.new(0.5,0.5)
+	PageButtons.BackgroundColor3 = Color3.new(1,1,1)
+	PageButtons.BackgroundTransparency = 1
+	PageButtons.BorderColor3 = Color3.new(0,0,0)
+	PageButtons.BorderSizePixel = 0
+	PageButtons.Position = UDim2.new(-0.137,0,0.5,0)
+	PageButtons.Size = UDim2.new(0.231,0,0.973,0)
+end
+
+local UIListLayout = Instance.new("UIListLayout",PageButtons) do
+	UIListLayout.Padding = UDim.new(0.03,0)
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+end
+local Logs = Instance.new("TextButton",PageButtons) do
+	Logs.Name = "Logs"
+	Logs.AnchorPoint = Vector2.new(0.5,0.5)
+	Logs.BackgroundColor3 = Color3.new(0,0,0)
+	Logs.BackgroundTransparency = 0.5
+	Logs.BorderColor3 = Color3.new(1,1,1)
+	Logs.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal)
+	Logs.Position = UDim2.new(0.5,0,0.468,0)
+	Logs.Size = UDim2.new(1,0,0.12,0)
+	Logs.Text = ""
+	Logs.TextColor3 = Color3.new(1,1,1)
+	Logs.TextScaled = true
+	Logs.TextSize = 14
+	Logs.TextWrapped = true
+end
+
+local TextLabel = Instance.new("TextLabel",Logs) do
+	TextLabel.AnchorPoint = Vector2.new(0.5,0.5)
+	TextLabel.BackgroundColor3 = Color3.new(1,1,1)
+	TextLabel.BackgroundTransparency = 1
+	TextLabel.BorderColor3 = Color3.new(0,0,0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	TextLabel.LayoutOrder = 1
+	TextLabel.Position = UDim2.new(0.494,0,0.499,0)
+	TextLabel.Size = UDim2.new(0.85,0,0.55,0)
+	TextLabel.Text = "Logs"
+	TextLabel.TextColor3 = Color3.new(1,1,1)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14
+	TextLabel.TextWrapped = true
+end
+
+local UIStroke = Instance.new("UIStroke",TextLabel) do
+	UIStroke:SetAttribute("OriginalThickness",2)
+	UIStroke:AddTag("ScreenStroke")
+	UIStroke:AddTag("UIStroke")
+	UIStroke.Thickness = 1.476
+end
+local UIGradient = Instance.new("UIGradient",Logs) do
+	UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
+end
+local Users = Instance.new("TextButton",PageButtons) do
+	Users.Name = "Users"
+	Users.AnchorPoint = Vector2.new(0.5,0.5)
+	Users.BackgroundColor3 = Color3.new(0,0,0)
+	Users.BackgroundTransparency = 0.5
+	Users.BorderColor3 = Color3.new(1,1,1)
+	Users.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal)
+	Users.Position = UDim2.new(0.5,0,0.468,0)
+	Users.Size = UDim2.new(1,0,0.12,0)
+	Users.Text = ""
+	Users.TextColor3 = Color3.new(1,1,1)
+	Users.TextScaled = true
+	Users.TextSize = 14
+	Users.TextWrapped = true
+	Users.Visible = false
+end
+
+local UIGradient_1 = Instance.new("UIGradient",Users) do
+	UIGradient_1.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
+end
+local TextLabel_1 = Instance.new("TextLabel",Users) do
+	TextLabel_1.AnchorPoint = Vector2.new(0.5,0.5)
+	TextLabel_1.BackgroundColor3 = Color3.new(1,1,1)
+	TextLabel_1.BackgroundTransparency = 1
+	TextLabel_1.BorderColor3 = Color3.new(0,0,0)
+	TextLabel_1.BorderSizePixel = 0
+	TextLabel_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	TextLabel_1.LayoutOrder = 1
+	TextLabel_1.Position = UDim2.new(0.494,0,0.499,0)
+	TextLabel_1.Size = UDim2.new(0.85,0,0.55,0)
+	TextLabel_1.Text = "AJ Users"
+	TextLabel_1.TextColor3 = Color3.new(1,1,1)
+	TextLabel_1.TextScaled = true
+	TextLabel_1.TextSize = 14
+	TextLabel_1.TextWrapped = true
+end
+
+local UIStroke_1 = Instance.new("UIStroke",TextLabel_1) do
+	UIStroke_1:SetAttribute("OriginalThickness",2)
+	UIStroke_1:AddTag("ScreenStroke")
+	UIStroke_1:AddTag("UIStroke")
+	UIStroke_1.Thickness = 1.476
+end
+local Config = Instance.new("TextButton",PageButtons) do
+	Config.Name = "Config"
+	Config.AnchorPoint = Vector2.new(0.5,0.5)
+	Config.BackgroundColor3 = Color3.new(0,0,0)
+	Config.BackgroundTransparency = 0.5
+	Config.BorderColor3 = Color3.new(1,1,1)
+	Config.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal)
+	Config.Position = UDim2.new(0.5,0,0.468,0)
+	Config.Size = UDim2.new(1,0,0.12,0)
+	Config.Text = ""
+	Config.TextColor3 = Color3.new(1,1,1)
+	Config.TextScaled = true
+	Config.TextSize = 14
+	Config.TextWrapped = true
+end
+
+local UIGradient_2 = Instance.new("UIGradient",Config) do
+	UIGradient_2.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
+end
+local TextLabel_2 = Instance.new("TextLabel",Config) do
+	TextLabel_2.AnchorPoint = Vector2.new(0.5,0.5)
+	TextLabel_2.BackgroundColor3 = Color3.new(1,1,1)
+	TextLabel_2.BackgroundTransparency = 1
+	TextLabel_2.BorderColor3 = Color3.new(0,0,0)
+	TextLabel_2.BorderSizePixel = 0
+	TextLabel_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	TextLabel_2.LayoutOrder = 1
+	TextLabel_2.Position = UDim2.new(0.494,0,0.499,0)
+	TextLabel_2.Size = UDim2.new(0.85,0,0.55,0)
+	TextLabel_2.Text = "Config"
+	TextLabel_2.TextColor3 = Color3.new(1,1,1)
+	TextLabel_2.TextScaled = true
+	TextLabel_2.TextSize = 14
+	TextLabel_2.TextWrapped = true
+end
+
+local UIStroke_2 = Instance.new("UIStroke",TextLabel_2) do
+	UIStroke_2:SetAttribute("OriginalThickness",2)
+	UIStroke_2:AddTag("ScreenStroke")
+	UIStroke_2:AddTag("UIStroke")
+	UIStroke_2.Thickness = 1.476
+end
+local Content = Instance.new("Frame",Main) do
+	Content.Name = "Content"
+	Content.AnchorPoint = Vector2.new(0.5,1)
+	Content.BackgroundColor3 = Color3.new(1,1,1)
+	Content.BackgroundTransparency = 1
+	Content.BorderColor3 = Color3.new(0,0,0)
+	Content.BorderSizePixel = 0
+	Content.Position = UDim2.new(0.5,0,1,0)
+	Content.Size = UDim2.new(1,0,0.852,0)
+end
+
+local Decoration = Instance.new("Frame",Content) do
+	Decoration.Name = "Decoration"
+	Decoration.AnchorPoint = Vector2.new(0.5,0)
+	Decoration.BackgroundColor3 = Color3.new(0,0,0)
+	Decoration.BackgroundTransparency = 0.8
+	Decoration.BorderColor3 = Color3.new(0,0,0)
+	Decoration.BorderSizePixel = 0
+	Decoration.Position = UDim2.new(0.5,0,0,0)
+	Decoration.Size = UDim2.new(0.983,0,0.985,0)
+	Decoration.ZIndex = 0
+end
+local Holder = Instance.new("Frame",Content) do
+	Holder.Name = "Holder"
+	Holder.AnchorPoint = Vector2.new(0.5,0)
+	Holder.BackgroundColor3 = Color3.new(0,0,0)
+	Holder.BackgroundTransparency = 0.8
+	Holder.BorderColor3 = Color3.new(0,0,0)
+	Holder.BorderSizePixel = 0
+	Holder.ClipsDescendants = true
+	Holder.Position = UDim2.new(0.5,0,0.015,0)
+	Holder.Size = UDim2.new(0.983,0,0.97,0)
+end
+
+local Logs_1 = Instance.new("ScrollingFrame",Holder) do
+	Logs_1.Name = "Logs"
+	Logs_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Logs_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	Logs_1.BackgroundColor3 = Color3.new(1,1,1)
+	Logs_1.BackgroundTransparency = 1
+	Logs_1.BorderColor3 = Color3.new(0,0,0)
+	Logs_1.BorderSizePixel = 0
+	Logs_1.CanvasSize = UDim2.new(0,0,1,0)
+	Logs_1.Position = UDim2.new(0.5,0,0.5,0)
+	Logs_1.ScrollBarImageColor3 = Color3.new(0,0,0)
+	Logs_1.ScrollBarThickness = 0
+	Logs_1.ScrollingDirection = Enum.ScrollingDirection.Y
+	Logs_1.Size = UDim2.new(1,0,1,0)
+end
+
+local UIListLayout_1 = Instance.new("UIListLayout",Logs_1) do
+	UIListLayout_1.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout_1.Padding = UDim.new(0.023,0)
+	UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
+end
+local oldtemplate = Instance.new("ImageLabel",Logs_1) do
+	oldtemplate.Name = "oldtemplate"
+	oldtemplate.BackgroundColor3 = Color3.new(0,0,0)
+	oldtemplate.BackgroundTransparency = 0.5
+	oldtemplate.BorderColor3 = Color3.new(0,0,0)
+	oldtemplate.BorderSizePixel = 0
+	oldtemplate.LayoutOrder = 42
+	oldtemplate.Position = UDim2.new(0.029,0,0.092,0)
+	oldtemplate.ScaleType = Enum.ScaleType.Fit
+	oldtemplate.Size = UDim2.new(0,529,0,107)
+	oldtemplate.Visible = false
+end
+
+local NameLabel = Instance.new("TextLabel",oldtemplate) do
+	NameLabel.Name = "NameLabel"
+	NameLabel.AnchorPoint = Vector2.new(0.5,0)
+	NameLabel.BackgroundColor3 = Color3.new(1,1,1)
+	NameLabel.BackgroundTransparency = 1
+	NameLabel.BorderColor3 = Color3.new(0,0,0)
+	NameLabel.BorderSizePixel = 0
+	NameLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	NameLabel.LayoutOrder = 1
+	NameLabel.Position = UDim2.new(0.64,0,0.06,0)
+	NameLabel.Size = UDim2.new(0.876,0,0.226,0)
+	NameLabel.Text = "{DisplayName}"
+	NameLabel.TextColor3 = Color3.new(1,1,1)
+	NameLabel.TextScaled = true
+	NameLabel.TextSize = 14
+	NameLabel.TextWrapped = true
+	NameLabel.TextXAlignment = Enum.TextXAlignment.Left
+	NameLabel.ZIndex = 2
+end
+
+local UIStroke_3 = Instance.new("UIStroke",NameLabel) do
+	UIStroke_3:SetAttribute("OriginalThickness",3)
+	UIStroke_3:AddTag("ScreenStroke")
+	UIStroke_3:AddTag("UIStroke")
+	UIStroke_3.Thickness = 2.214
+end
+local MutationLabel = Instance.new("TextLabel",oldtemplate) do
+	MutationLabel.Name = "MutationLabel"
+	MutationLabel.AnchorPoint = Vector2.new(0.5,0)
+	MutationLabel.BackgroundColor3 = Color3.new(1,1,1)
+	MutationLabel.BackgroundTransparency = 1
+	MutationLabel.BorderColor3 = Color3.new(0,0,0)
+	MutationLabel.BorderSizePixel = 0
+	MutationLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	MutationLabel.LayoutOrder = 1
+	MutationLabel.Position = UDim2.new(0.64,0,0.499,0)
+	MutationLabel.Size = UDim2.new(0.876,0,0.226,0)
+	MutationLabel.Text = "Gold"
+	MutationLabel.TextColor3 = Color3.new(1,0.871,0.349)
+	MutationLabel.TextScaled = true
+	MutationLabel.TextSize = 14
+	MutationLabel.TextWrapped = true
+	MutationLabel.TextXAlignment = Enum.TextXAlignment.Left
+	MutationLabel.ZIndex = 2
+end
+local RarityLabel = Instance.new("TextLabel",oldtemplate) do
+	RarityLabel.Name = "RarityLabel"
+	RarityLabel.AnchorPoint = Vector2.new(0.5,0)
+	RarityLabel.BackgroundColor3 = Color3.new(1,1,1)
+	RarityLabel.BackgroundTransparency = 1
+	RarityLabel.BorderColor3 = Color3.new(0,0,0)
+	RarityLabel.BorderSizePixel = 0
+	RarityLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	RarityLabel.LayoutOrder = 1
+	RarityLabel.Position = UDim2.new(0.64,0,0.284,0)
+	RarityLabel.Size = UDim2.new(0.876,0,0.226,0)
+	RarityLabel.Text = "Rarity"
+	RarityLabel.TextColor3 = Color3.new(0.451,1,0)
+	RarityLabel.TextScaled = true
+	RarityLabel.TextSize = 14
+	RarityLabel.TextWrapped = true
+	RarityLabel.TextXAlignment = Enum.TextXAlignment.Left
+	RarityLabel.ZIndex = 2
+end
+
+local UIStroke_4 = Instance.new("UIStroke",RarityLabel) do
+	UIStroke_4:SetAttribute("OriginalThickness",3)
+	UIStroke_4:AddTag("ScreenStroke")
+	UIStroke_4:AddTag("UIStroke")
+	UIStroke_4.Thickness = 2.214
+end
+local ViewportFrame = Instance.new("ViewportFrame",oldtemplate) do
+	ViewportFrame.Ambient = Color3.new(1,1,1)
+	ViewportFrame.AnchorPoint = Vector2.new(0.5,0.5)
+	ViewportFrame.BackgroundColor3 = Color3.new(0,0,0)
+	ViewportFrame.BackgroundTransparency = 1
+	ViewportFrame.BorderColor3 = Color3.new(0,0,0)
+	ViewportFrame.BorderSizePixel = 0
+	ViewportFrame.LightColor = Color3.new(1,1,1)
+	ViewportFrame.Position = UDim2.new(0.101,0,0.466,0)
+	ViewportFrame.Size = UDim2.new(0.202,0,1.068,0)
+end
+local GenerationLabel = Instance.new("TextLabel",oldtemplate) do
+	GenerationLabel.Name = "GenerationLabel"
+	GenerationLabel.AnchorPoint = Vector2.new(0.5,0)
+	GenerationLabel.BackgroundColor3 = Color3.new(1,1,1)
+	GenerationLabel.BackgroundTransparency = 1
+	GenerationLabel.BorderColor3 = Color3.new(0,0,0)
+	GenerationLabel.BorderSizePixel = 0
+	GenerationLabel.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	GenerationLabel.LayoutOrder = 1
+	GenerationLabel.Position = UDim2.new(0.394,0,0.733,0)
+	GenerationLabel.Size = UDim2.new(0.384,0,0.212,0)
+	GenerationLabel.Text = "$0/s"
+	GenerationLabel.TextColor3 = Color3.new(1,0.969,0)
+	GenerationLabel.TextScaled = true
+	GenerationLabel.TextSize = 14
+	GenerationLabel.TextWrapped = true
+	GenerationLabel.TextXAlignment = Enum.TextXAlignment.Left
+	GenerationLabel.ZIndex = 2
+end
+local SpamJoin = Instance.new("ImageButton",oldtemplate) do
+	SpamJoin:SetAttribute("JobId","67")
+	SpamJoin.Name = "SpamJoin"
+	SpamJoin.AnchorPoint = Vector2.new(0.5,0.5)
+	SpamJoin.BackgroundColor3 = Color3.new(1,1,1)
+	SpamJoin.BackgroundTransparency = 1
+	SpamJoin.BorderColor3 = Color3.new(0,0,0)
+	SpamJoin.BorderSizePixel = 0
+	SpamJoin.HoverImage = "rbxassetid://100703312924377"
+	SpamJoin.Image = "rbxassetid://83673098636246"
+	SpamJoin.Position = UDim2.new(0.844,0,0.314,0)
+	SpamJoin.ScaleType = Enum.ScaleType.Fit
+	SpamJoin.Size = UDim2.new(0.287,0,0.393,0)
+end
+
+local Label = Instance.new("TextLabel",SpamJoin) do
+	Label.Name = "Label"
+	Label.AnchorPoint = Vector2.new(0.5,0.5)
+	Label.BackgroundColor3 = Color3.new(1,1,1)
+	Label.BackgroundTransparency = 1
+	Label.BorderColor3 = Color3.new(0,0,0)
+	Label.BorderSizePixel = 0
+	Label.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Label.Position = UDim2.new(0.5,0,0.5,0)
+	Label.Size = UDim2.new(1,0,0.56,0)
+	Label.Text = "SPAM JOIN"
+	Label.TextColor3 = Color3.new(1,1,1)
+	Label.TextScaled = true
+	Label.TextSize = 14
+	Label.TextWrapped = true
+end
+
+local UIStroke_5 = Instance.new("UIStroke",Label) do
+	UIStroke_5.Thickness = 2
+end
+local Join = Instance.new("ImageButton",oldtemplate) do
+	Join:SetAttribute("JobId","67")
+	Join.Name = "Join"
+	Join.AnchorPoint = Vector2.new(0.5,0.5)
+	Join.BackgroundColor3 = Color3.new(1,1,1)
+	Join.BackgroundTransparency = 1
+	Join.BorderColor3 = Color3.new(0,0,0)
+	Join.BorderSizePixel = 0
+	Join.HoverImage = "rbxassetid://100703312924377"
+	Join.Image = "rbxassetid://83673098636246"
+	Join.Position = UDim2.new(0.846,0,0.753,0)
+	Join.ScaleType = Enum.ScaleType.Fit
+	Join.Size = UDim2.new(0.287,0,0.393,0)
+end
+
+local Label_1 = Instance.new("TextLabel",Join) do
+	Label_1.Name = "Label"
+	Label_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Label_1.BackgroundColor3 = Color3.new(1,1,1)
+	Label_1.BackgroundTransparency = 1
+	Label_1.BorderColor3 = Color3.new(0,0,0)
+	Label_1.BorderSizePixel = 0
+	Label_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Label_1.Position = UDim2.new(0.5,0,0.5,0)
+	Label_1.Size = UDim2.new(1,0,0.56,0)
+	Label_1.Text = "JOIN"
+	Label_1.TextColor3 = Color3.new(1,1,1)
+	Label_1.TextScaled = true
+	Label_1.TextSize = 14
+	Label_1.TextWrapped = true
+end
+
+local UIStroke_6 = Instance.new("UIStroke",Label_1) do
+	UIStroke_6.Thickness = 2
+end
+local Template = Instance.new("Frame",Logs_1) do
+	Template.Name = "Template"
+	Template.BackgroundColor3 = Color3.new(0,0,0)
+	Template.BackgroundTransparency = 1
+	Template.BorderColor3 = Color3.new(0,0,0)
+	Template.BorderSizePixel = 0
+	Template.Position = UDim2.new(0,0,0.003,0)
+	Template.Size = UDim2.new(1,0,0.275,0)
+	Template.Visible = false
+end
+
+local Filler = Instance.new("Frame",Template) do
+	Filler.Name = "Filler"
+	Filler.AnchorPoint = Vector2.new(0.5,0)
+	Filler.BackgroundColor3 = Color3.new(0,0,0)
+	Filler.BackgroundTransparency = 0.5
+	Filler.BorderColor3 = Color3.new(0,0,0)
+	Filler.BorderSizePixel = 0
+	Filler.Position = UDim2.new(0.5,0,0,0)
+	Filler.Size = UDim2.new(1,-3,0.95,0)
+end
+
+local Mutation = Instance.new("TextLabel",Filler) do
+	Mutation.Name = "Mutation"
+	Mutation.AnchorPoint = Vector2.new(0.5,0.5)
+	Mutation.BackgroundColor3 = Color3.new(1,1,1)
+	Mutation.BackgroundTransparency = 1
+	Mutation.BorderColor3 = Color3.new(0,0,0)
+	Mutation.BorderSizePixel = 0
+	Mutation.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	Mutation.LayoutOrder = 2
+	Mutation.Position = UDim2.new(0.404,0,0.757,0)
+	Mutation.Size = UDim2.new(0.403,0,0.164,0)
+	Mutation.Text = "Default"
+	Mutation.TextColor3 = Color3.new(1,1,1)
+	Mutation.TextScaled = true
+	Mutation.TextSize = 14
+	Mutation.TextWrapped = true
+	Mutation.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_7 = Instance.new("UIStroke",Mutation) do
+	UIStroke_7:SetAttribute("OriginalThickness",3)
+	UIStroke_7:AddTag("ScreenStroke")
+	UIStroke_7:AddTag("UIStroke")
+	UIStroke_7.Thickness = 2.214
+end
+local NameLabel_1 = Instance.new("TextLabel",Filler) do
+	NameLabel_1.Name = "NameLabel"
+	NameLabel_1.AnchorPoint = Vector2.new(0.5,0.5)
+	NameLabel_1.BackgroundColor3 = Color3.new(1,1,1)
+	NameLabel_1.BackgroundTransparency = 1
+	NameLabel_1.BorderColor3 = Color3.new(0,0,0)
+	NameLabel_1.BorderSizePixel = 0
+	NameLabel_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	NameLabel_1.LayoutOrder = 1
+	NameLabel_1.Position = UDim2.new(0.489,0,0.298,0)
+	NameLabel_1.Size = UDim2.new(0.567,0,0.249,0)
+	NameLabel_1.Text = "{DisplayName}"
+	NameLabel_1.TextColor3 = Color3.new(1,1,1)
+	NameLabel_1.TextScaled = true
+	NameLabel_1.TextSize = 14
+	NameLabel_1.TextWrapped = true
+	NameLabel_1.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_8 = Instance.new("UIStroke",NameLabel_1) do
+	UIStroke_8.Thickness = 2
+end
+local BrainrotBg = Instance.new("ImageLabel",Filler) do
+	BrainrotBg.Name = "BrainrotBg"
+	BrainrotBg.AnchorPoint = Vector2.new(0,0.5)
+	BrainrotBg.BackgroundColor3 = Color3.new(0,0,0)
+	BrainrotBg.BackgroundTransparency = 0.5
+	BrainrotBg.BorderColor3 = Color3.new(0,0,0)
+	BrainrotBg.BorderSizePixel = 0
+	BrainrotBg.LayoutOrder = 2
+	BrainrotBg.Position = UDim2.new(0.02,0,0.483,0)
+	BrainrotBg.ScaleType = Enum.ScaleType.Fit
+	BrainrotBg.Size = UDim2.new(0.159,0,0.715,0)
+	BrainrotBg.ZIndex = 2
+end
+
+local UIStroke_9 = Instance.new("UIStroke",BrainrotBg) do
+	UIStroke_9.Color = Color3.new(1,1,1)
+end
+local ViewportFrame_1 = Instance.new("ViewportFrame",BrainrotBg) do
+	ViewportFrame_1.Ambient = Color3.new(1,1,1)
+	ViewportFrame_1.AnchorPoint = Vector2.new(0.5,0.5)
+	ViewportFrame_1.BackgroundColor3 = Color3.new(0,0,0)
+	ViewportFrame_1.BackgroundTransparency = 1
+	ViewportFrame_1.BorderColor3 = Color3.new(0,0,0)
+	ViewportFrame_1.BorderSizePixel = 0
+	ViewportFrame_1.LightColor = Color3.new(1,1,1)
+	ViewportFrame_1.Position = UDim2.new(0.5,0,0.5,0)
+	ViewportFrame_1.Size = UDim2.new(1,0,1,0)
+end
+local Generation = Instance.new("TextLabel",Filler) do
+	Generation.Name = "Generation"
+	Generation.AnchorPoint = Vector2.new(0.5,0.5)
+	Generation.BackgroundColor3 = Color3.new(1,1,1)
+	Generation.BackgroundTransparency = 1
+	Generation.BorderColor3 = Color3.new(0,0,0)
+	Generation.BorderSizePixel = 0
+	Generation.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	Generation.LayoutOrder = 1
+	Generation.Position = UDim2.new(0.489,0,0.546,0)
+	Generation.Size = UDim2.new(0.567,0,0.225,0)
+	Generation.Text = "$0/s"
+	Generation.TextColor3 = Color3.new(1,0.969,0)
+	Generation.TextScaled = true
+	Generation.TextSize = 14
+	Generation.TextWrapped = true
+	Generation.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_10 = Instance.new("UIStroke",Generation) do
+	UIStroke_10:SetAttribute("OriginalThickness",3)
+	UIStroke_10:AddTag("ScreenStroke")
+	UIStroke_10:AddTag("UIStroke")
+	UIStroke_10.Thickness = 2.214
+end
+local Join_1 = Instance.new("ImageButton",Filler) do
+	Join_1:SetAttribute("JobId","67")
+	Join_1.Name = "Join"
+	Join_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Join_1.BackgroundColor3 = Color3.new(1,1,1)
+	Join_1.BackgroundTransparency = 1
+	Join_1.BorderColor3 = Color3.new(0,0,0)
+	Join_1.BorderSizePixel = 0
+	Join_1.HoverImage = "rbxassetid://100703312924377"
+	Join_1.Image = "rbxassetid://83673098636246"
+	Join_1.Position = UDim2.new(0.862,0,0.753,0)
+	Join_1.ScaleType = Enum.ScaleType.Fit
+	Join_1.Size = UDim2.new(0.299,0,0.43,0)
+end
+
+local Label_2 = Instance.new("TextLabel",Join_1) do
+	Label_2.Name = "Label"
+	Label_2.AnchorPoint = Vector2.new(0.5,0.5)
+	Label_2.BackgroundColor3 = Color3.new(1,1,1)
+	Label_2.BackgroundTransparency = 1
+	Label_2.BorderColor3 = Color3.new(0,0,0)
+	Label_2.BorderSizePixel = 0
+	Label_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Label_2.Position = UDim2.new(0.5,0,0.5,0)
+	Label_2.Size = UDim2.new(1,0,0.56,0)
+	Label_2.Text = "JOIN"
+	Label_2.TextColor3 = Color3.new(1,1,1)
+	Label_2.TextScaled = true
+	Label_2.TextSize = 14
+	Label_2.TextWrapped = true
+end
+
+local UIStroke_11 = Instance.new("UIStroke",Label_2) do
+	UIStroke_11.Thickness = 2
+end
+local SpamJoin_1 = Instance.new("ImageButton",Filler) do
+	SpamJoin_1:SetAttribute("JobId","67")
+	SpamJoin_1.Name = "SpamJoin"
+	SpamJoin_1.AnchorPoint = Vector2.new(0.5,0.5)
+	SpamJoin_1.BackgroundColor3 = Color3.new(1,1,1)
+	SpamJoin_1.BackgroundTransparency = 1
+	SpamJoin_1.BorderColor3 = Color3.new(0,0,0)
+	SpamJoin_1.BorderSizePixel = 0
+	SpamJoin_1.HoverImage = "rbxassetid://100703312924377"
+	SpamJoin_1.Image = "rbxassetid://83673098636246"
+	SpamJoin_1.ImageColor3 = Color3.new(1,0,0)
+	SpamJoin_1.Position = UDim2.new(0.861,0,0.289,0)
+	SpamJoin_1.ScaleType = Enum.ScaleType.Fit
+	SpamJoin_1.Size = UDim2.new(0.299,0,0.43,0)
+end
+
+local Label_3 = Instance.new("TextLabel",SpamJoin_1) do
+	Label_3.Name = "Label"
+	Label_3.AnchorPoint = Vector2.new(0.5,0.5)
+	Label_3.BackgroundColor3 = Color3.new(1,1,1)
+	Label_3.BackgroundTransparency = 1
+	Label_3.BorderColor3 = Color3.new(0,0,0)
+	Label_3.BorderSizePixel = 0
+	Label_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Label_3.Position = UDim2.new(0.5,0,0.5,0)
+	Label_3.Size = UDim2.new(1,0,0.56,0)
+	Label_3.Text = "CANCEL"
+	Label_3.TextColor3 = Color3.new(1,1,1)
+	Label_3.TextScaled = true
+	Label_3.TextSize = 14
+	Label_3.TextWrapped = true
+end
+
+local UIStroke_12 = Instance.new("UIStroke",Label_3) do
+	UIStroke_12.Thickness = 2
+end
+local UIStroke_13 = Instance.new("UIStroke",Filler)
+local Duel = Instance.new("ImageLabel",Filler) do
+	Duel.Name = "Duel"
+	Duel.AnchorPoint = Vector2.new(0.5,0.5)
+	Duel.BackgroundColor3 = Color3.new(1,1,1)
+	Duel.BackgroundTransparency = 1
+	Duel.BorderColor3 = Color3.new(0,0,0)
+	Duel.BorderSizePixel = 0
+	Duel.Image = "rbxassetid://83673098636246"
+	Duel.ImageColor3 = Color3.new(1,0,0)
+	Duel.LayoutOrder = 3
+	Duel.Position = UDim2.new(0.097,0,0.853,0)
+	Duel.ScaleType = Enum.ScaleType.Fit
+	Duel.Size = UDim2.new(0.131,0,0.275,0)
+	Duel.Visible = false
+	Duel.ZIndex = 5
+end
+
+local Label_4 = Instance.new("TextLabel",Duel) do
+	Label_4.Name = "Label"
+	Label_4.AnchorPoint = Vector2.new(0.5,0.5)
+	Label_4.BackgroundColor3 = Color3.new(1,1,1)
+	Label_4.BackgroundTransparency = 1
+	Label_4.BorderColor3 = Color3.new(0,0,0)
+	Label_4.BorderSizePixel = 0
+	Label_4.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Label_4.Position = UDim2.new(0.5,0,0.5,0)
+	Label_4.Size = UDim2.new(1,0,0.56,0)
+	Label_4.Text = "DUEL"
+	Label_4.TextColor3 = Color3.new(1,1,1)
+	Label_4.TextScaled = true
+	Label_4.TextSize = 14
+	Label_4.TextWrapped = true
+end
+
+local UIStroke_14 = Instance.new("UIStroke",Label_4) do
+	UIStroke_14.Thickness = 2
+end
+local Padding = Instance.new("Frame",Logs_1) do
+	Padding.Name = "Padding"
+	Padding.AnchorPoint = Vector2.new(0.5,0.5)
+	Padding.BackgroundColor3 = Color3.new(1,1,1)
+	Padding.BackgroundTransparency = 1
+	Padding.BorderColor3 = Color3.new(0,0,0)
+	Padding.BorderSizePixel = 0
+	Padding.LayoutOrder = -99
+	Padding.Position = UDim2.new(0.045,0,0.112,0)
+	Padding.Size = UDim2.new(1,0,0,0)
+end
+local NoLogs = Instance.new("Frame",Logs_1) do
+	NoLogs.Name = "NoLogs"
+	NoLogs.AnchorPoint = Vector2.new(0.5,0.5)
+	NoLogs.BackgroundColor3 = Color3.new(1,1,1)
+	NoLogs.BackgroundTransparency = 1
+	NoLogs.BorderColor3 = Color3.new(0,0,0)
+	NoLogs.BorderSizePixel = 0
+	NoLogs.LayoutOrder = -99
+	NoLogs.Position = UDim2.new(0.045,0,0.112,0)
+	NoLogs.Size = UDim2.new(1,0,1,0)
+	NoLogs.Visible = true
+end
+
+local ViewportFrame_2 = Instance.new("ViewportFrame",NoLogs) do
+	ViewportFrame_2.Ambient = Color3.new(1,1,1)
+	ViewportFrame_2.AnchorPoint = Vector2.new(0.5,0.5)
+	ViewportFrame_2.BackgroundColor3 = Color3.new(0,0,0)
+	ViewportFrame_2.BackgroundTransparency = 1
+	ViewportFrame_2.BorderColor3 = Color3.new(0,0,0)
+	ViewportFrame_2.BorderSizePixel = 0
+	ViewportFrame_2.LightColor = Color3.new(1,1,1)
+	ViewportFrame_2.Position = UDim2.new(0.5,0,0.5,0)
+	ViewportFrame_2.Size = UDim2.new(1,0,1,0)
+end
+
+task.spawn(function()
+   task.wait(2)
+local Animals = require(game:GetService("ReplicatedStorage").Shared.Animals)
+Animals:AttachOnViewportWithOptimizations(
+	"Meowl",
+	ViewportFrame_2,
+	true,
+	nil,
+	true
+)
+end)
+
+
+local LocalScript = Instance.new("LocalScript",ViewportFrame_2)
+local text = Instance.new("TextLabel",NoLogs) do
+	text.Name = "text"
+	text.AnchorPoint = Vector2.new(0.5,0.5)
+	text.BackgroundColor3 = Color3.new(1,1,1)
+	text.BackgroundTransparency = 1
+	text.BorderColor3 = Color3.new(0,0,0)
+	text.BorderSizePixel = 0
+	text.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Normal)
+	text.LayoutOrder = 1
+	text.Position = UDim2.new(0.499,0,0.078,0)
+	text.Size = UDim2.new(0.545,0,0.148,0)
+	text.Text = "No logs yet :3"
+	text.TextColor3 = Color3.new(1,1,1)
+	text.TextScaled = true
+	text.TextSize = 14
+	text.TextWrapped = true
+	text.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_15 = Instance.new("UIStroke",text) do
+	UIStroke_15:SetAttribute("OriginalThickness",3)
+	UIStroke_15:AddTag("ScreenStroke")
+	UIStroke_15:AddTag("UIStroke")
+	UIStroke_15.Thickness = 2.214
+end
+local Users_1 = Instance.new("ScrollingFrame",Holder) do
+	Users_1.Name = "Users"
+	Users_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Users_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	Users_1.BackgroundColor3 = Color3.new(1,1,1)
+	Users_1.BackgroundTransparency = 1
+	Users_1.BorderColor3 = Color3.new(0,0,0)
+	Users_1.BorderSizePixel = 0
+	Users_1.CanvasSize = UDim2.new(0,0,1,0)
+	Users_1.Position = UDim2.new(0.5,0,0.5,0)
+	Users_1.ScrollBarImageColor3 = Color3.new(0,0,0)
+	Users_1.ScrollBarThickness = 0
+	Users_1.ScrollingDirection = Enum.ScrollingDirection.Y
+	Users_1.Size = UDim2.new(1,0,1,0)
+	Users_1.Visible = false
+end
+
+local UIListLayout_2 = Instance.new("UIListLayout",Users_1) do
+	UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout_2.Padding = UDim.new(0.023,0)
+	UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+end
+local Padding_1 = Instance.new("Frame",Users_1) do
+	Padding_1.Name = "Padding"
+	Padding_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Padding_1.BackgroundColor3 = Color3.new(1,1,1)
+	Padding_1.BackgroundTransparency = 1
+	Padding_1.BorderColor3 = Color3.new(0,0,0)
+	Padding_1.BorderSizePixel = 0
+	Padding_1.LayoutOrder = -99
+	Padding_1.Position = UDim2.new(0.045,0,0.112,0)
+	Padding_1.Size = UDim2.new(1,0,0,0)
+end
+local Template_1 = Instance.new("ImageButton",Users_1) do
+	Template_1.Name = "Template"
+	Template_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Template_1.BackgroundColor3 = Color3.new(0,0,0)
+	Template_1.BackgroundTransparency = 0.4
+	Template_1.BorderColor3 = Color3.new(0,0,0)
+	Template_1.BorderSizePixel = 0
+	Template_1.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Template_1.ImageTransparency = 1
+	Template_1.Position = UDim2.new(0.5,0,0.098,0)
+	Template_1.Size = UDim2.new(0.915,0,0.151,0)
+	Template_1.Visible = false
+end
+
+local playerPhoto = Instance.new("ImageLabel",Template_1) do
+	playerPhoto.Name = "playerPhoto"
+	playerPhoto.AnchorPoint = Vector2.new(0.5,0.5)
+	playerPhoto.BackgroundColor3 = Color3.new(1,1,1)
+	playerPhoto.BackgroundTransparency = 1
+	playerPhoto.BorderColor3 = Color3.new(0,0,0)
+	playerPhoto.BorderSizePixel = 0
+	playerPhoto.Image = "rbxthumb://type=AvatarHeadShot&id=2421502693&w=420&h=420"
+	playerPhoto.Position = UDim2.new(0.18,0,0.5,0)
+	playerPhoto.ScaleType = Enum.ScaleType.Fit
+	playerPhoto.Size = UDim2.new(0.345,0,1,0)
+end
+local playerName = Instance.new("TextLabel",Template_1) do
+	playerName.Name = "playerName"
+	playerName.AnchorPoint = Vector2.new(0.5,0.5)
+	playerName.BackgroundColor3 = Color3.new(1,1,1)
+	playerName.BackgroundTransparency = 1
+	playerName.BorderColor3 = Color3.new(0,0,0)
+	playerName.BorderSizePixel = 0
+	playerName.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	playerName.Position = UDim2.new(0.499,0,0.435,0)
+	playerName.Size = UDim2.new(0.283,0,0.51,0)
+	playerName.Text = "11waycee"
+	playerName.TextColor3 = Color3.new(1,1,1)
+	playerName.TextScaled = true
+	playerName.TextSize = 14
+	playerName.TextWrapped = true
+	playerName.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint = Instance.new("UITextSizeConstraint",playerName) do
+	UITextSizeConstraint.MaxTextSize = 42
+end
+local UIStroke_16 = Instance.new("UIStroke",playerName) do
+	UIStroke_16:SetAttribute("OriginalThickness",1.5)
+	UIStroke_16:AddTag("ScreenStroke")
+	UIStroke_16:AddTag("UIStroke")
+	UIStroke_16.Thickness = 1.72
+end
+local UIStroke_17 = Instance.new("UIStroke",Template_1) do
+	UIStroke_17:SetAttribute("OriginalThickness",1.5)
+	UIStroke_17:AddTag("ScreenStroke")
+	UIStroke_17:AddTag("UIStroke")
+	UIStroke_17.Thickness = 1.72
+end
+local Yourself = Instance.new("ImageLabel",Template_1) do
+	Yourself.Name = "Yourself"
+	Yourself.AnchorPoint = Vector2.new(0.5,0.5)
+	Yourself.BackgroundColor3 = Color3.new(1,1,1)
+	Yourself.BackgroundTransparency = 1
+	Yourself.BorderColor3 = Color3.new(0,0,0)
+	Yourself.BorderSizePixel = 0
+	Yourself.Image = "rbxassetid://83673098636246"
+	Yourself.LayoutOrder = 3
+	Yourself.Position = UDim2.new(0.853,0,0.496,0)
+	Yourself.ScaleType = Enum.ScaleType.Fit
+	Yourself.Size = UDim2.new(0.69,0,0.733,0)
+	Yourself.Visible = false
+	Yourself.ZIndex = 5
+end
+
+local Label_5 = Instance.new("TextLabel",Yourself) do
+	Label_5.Name = "Label"
+	Label_5.AnchorPoint = Vector2.new(0.5,0.5)
+	Label_5.BackgroundColor3 = Color3.new(1,1,1)
+	Label_5.BackgroundTransparency = 1
+	Label_5.BorderColor3 = Color3.new(0,0,0)
+	Label_5.BorderSizePixel = 0
+	Label_5.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Label_5.Position = UDim2.new(0.5,0,0.5,0)
+	Label_5.Size = UDim2.new(1,0,0.56,0)
+	Label_5.Text = "This is you."
+	Label_5.TextColor3 = Color3.new(1,1,1)
+	Label_5.TextScaled = true
+	Label_5.TextSize = 14
+	Label_5.TextWrapped = true
+end
+
+local UIStroke_18 = Instance.new("UIStroke",Label_5) do
+	UIStroke_18.Thickness = 2
+end
+local Config_1 = Instance.new("ScrollingFrame",Holder) do
+	Config_1.Name = "Config"
+	Config_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Config_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	Config_1.BackgroundColor3 = Color3.new(1,1,1)
+	Config_1.BackgroundTransparency = 1
+	Config_1.BorderColor3 = Color3.new(0,0,0)
+	Config_1.BorderSizePixel = 0
+	Config_1.CanvasSize = UDim2.new(0,0,1,0)
+	Config_1.Position = UDim2.new(0.5,0,0.5,0)
+	Config_1.ScrollBarImageColor3 = Color3.new(0,0,0)
+	Config_1.ScrollBarThickness = 0
+	Config_1.ScrollingDirection = Enum.ScrollingDirection.Y
+	Config_1.Size = UDim2.new(1,0,1,0)
+	Config_1.Visible = false
+end
+
+local UIListLayout_3 = Instance.new("UIListLayout",Config_1) do
+	UIListLayout_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout_3.Padding = UDim.new(0.023,0)
+	UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+end
+local Padding_2 = Instance.new("Frame",Config_1) do
+	Padding_2.Name = "Padding"
+	Padding_2.AnchorPoint = Vector2.new(0.5,0.5)
+	Padding_2.BackgroundColor3 = Color3.new(1,1,1)
+	Padding_2.BackgroundTransparency = 1
+	Padding_2.BorderColor3 = Color3.new(0,0,0)
+	Padding_2.BorderSizePixel = 0
+	Padding_2.LayoutOrder = -99
+	Padding_2.Position = UDim2.new(0.045,0,0.112,0)
+	Padding_2.Size = UDim2.new(1,0,0,0)
+end
+local Duel_1 = Instance.new("Frame",Config_1) do
+	Duel_1.Name = "Duel"
+	Duel_1.BackgroundColor3 = Color3.new(0,0,0)
+	Duel_1.BackgroundTransparency = 0.5
+	Duel_1.BorderColor3 = Color3.new(0,0,0)
+	Duel_1.BorderSizePixel = 0
+	Duel_1.Position = UDim2.new(0.021,0,0,0)
+	Duel_1.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function = Instance.new("TextLabel",Duel_1) do
+	Function.Name = "Function"
+	Function.BackgroundColor3 = Color3.new(1,1,1)
+	Function.BackgroundTransparency = 1
+	Function.BorderColor3 = Color3.new(0,0,0)
+	Function.BorderSizePixel = 0
+	Function.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function.Position = UDim2.new(0.024,0,0.088,0)
+	Function.Size = UDim2.new(0.646,0,0.81,0)
+	Function.Text = "Join Duel Logs"
+	Function.TextColor3 = Color3.new(1,1,1)
+	Function.TextScaled = true
+	Function.TextSize = 14
+	Function.TextWrapped = true
+	Function.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_1 = Instance.new("UITextSizeConstraint",Function) do
+	UITextSizeConstraint_1.MaxTextSize = 53
+end
+local UIStroke_19 = Instance.new("UIStroke",Function) do
+	UIStroke_19:SetAttribute("OriginalThickness",1)
+	UIStroke_19:AddTag("ScreenStroke")
+	UIStroke_19:AddTag("UIStroke")
+	UIStroke_19.Thickness = 0.942
+end
+local Buttons = Instance.new("Frame",Duel_1) do
+	Buttons.Name = "Buttons"
+	Buttons.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons.BackgroundTransparency = 1
+	Buttons.BorderColor3 = Color3.new(0,0,0)
+	Buttons.BorderSizePixel = 0
+	Buttons.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Button = Instance.new("ImageButton",Buttons) do
+	Button.Name = "Button"
+	Button.AnchorPoint = Vector2.new(0.5,0.5)
+	Button.BackgroundColor3 = Color3.fromRGB(125, 5, 5)
+	Button.BorderColor3 = Color3.new(0,0,0)
+	Button.BorderSizePixel = 0
+	Button.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Button.ImageTransparency = 1
+	Button.Position = UDim2.new(0.5,0,0.5,0)
+	Button.Size = UDim2.new(1,0,1,0)
+end
+
+local Text = Instance.new("TextLabel",Button) do
+	Text.Name = "Text"
+	Text.AnchorPoint = Vector2.new(0.5,0.5)
+	Text.BackgroundColor3 = Color3.new(1,1,1)
+	Text.BackgroundTransparency = 1
+	Text.BorderColor3 = Color3.new(0,0,0)
+	Text.BorderSizePixel = 0
+	Text.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text.Position = UDim2.new(0.5,0,0.5,0)
+	Text.Size = UDim2.new(1,0,0.9,0)
+	Text.Text = "Off"
+	Text.TextColor3 = Color3.new(1,1,1)
+	Text.TextScaled = true
+	Text.TextSize = 14
+	Text.TextWrapped = true
+end
+
+local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint",Text) do
+	UITextSizeConstraint_2.MaxTextSize = 67
+end
+
+local Sound = Instance.new("Frame",Config_1) do
+	Sound.Name = "Sound"
+	Sound.BackgroundColor3 = Color3.new(0,0,0)
+	Sound.BackgroundTransparency = 0.5
+	Sound.BorderColor3 = Color3.new(0,0,0)
+	Sound.BorderSizePixel = 0
+	Sound.Position = UDim2.new(0.021,0,0,0)
+	Sound.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_1 = Instance.new("TextLabel",Sound) do
+	Function_1.Name = "Function"
+	Function_1.BackgroundColor3 = Color3.new(1,1,1)
+	Function_1.BackgroundTransparency = 1
+	Function_1.BorderColor3 = Color3.new(0,0,0)
+	Function_1.BorderSizePixel = 0
+	Function_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_1.Position = UDim2.new(0.024,0,0.088,0)
+	Function_1.Size = UDim2.new(0.646,0,0.81,0)
+	Function_1.Text = "Sound ID"
+	Function_1.TextColor3 = Color3.new(1,1,1)
+	Function_1.TextScaled = true
+	Function_1.TextSize = 14
+	Function_1.TextWrapped = true
+	Function_1.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_3 = Instance.new("UITextSizeConstraint",Function_1) do
+	UITextSizeConstraint_3.MaxTextSize = 53
+end
+local UIStroke_22 = Instance.new("UIStroke",Function_1) do
+	UIStroke_22:SetAttribute("OriginalThickness",1)
+	UIStroke_22:AddTag("ScreenStroke")
+	UIStroke_22:AddTag("UIStroke")
+	UIStroke_22.Thickness = 0.942
+end
+local Buttons_1 = Instance.new("Frame",Sound) do
+	Buttons_1.Name = "Buttons"
+	Buttons_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_1.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_1.BackgroundTransparency = 1
+	Buttons_1.BorderColor3 = Color3.new(0,0,0)
+	Buttons_1.BorderSizePixel = 0
+	Buttons_1.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_1.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_1 = Instance.new("TextBox",Buttons_1) do
+	Text_1.Name = "Text"
+	Text_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_1.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_1.BorderColor3 = Color3.new(0,0,0)
+	Text_1.BorderSizePixel = 0
+	Text_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_1.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_1.PlaceholderText = "SoundId here"
+	Text_1.Position = UDim2.new(0.5,0,0.5,0)
+	Text_1.Size = UDim2.new(1,0,1,0)
+	Text_1.Text = ""
+	Text_1.TextColor3 = Color3.new(1,1,1)
+	Text_1.TextScaled = true
+	Text_1.TextSize = 14
+	Text_1.TextWrapped = true
+end
+local MinGeneration = Instance.new("Frame",Config_1) do
+	MinGeneration.Name = "MinGeneration"
+	MinGeneration.BackgroundColor3 = Color3.new(0,0,0)
+	MinGeneration.BackgroundTransparency = 0.5
+	MinGeneration.BorderColor3 = Color3.new(0,0,0)
+	MinGeneration.BorderSizePixel = 0
+	MinGeneration.Position = UDim2.new(0.021,0,0,0)
+	MinGeneration.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_2 = Instance.new("TextLabel",MinGeneration) do
+	Function_2.Name = "Function"
+	Function_2.BackgroundColor3 = Color3.new(1,1,1)
+	Function_2.BackgroundTransparency = 1
+	Function_2.BorderColor3 = Color3.new(0,0,0)
+	Function_2.BorderSizePixel = 0
+	Function_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_2.Position = UDim2.new(0.024,0,0.088,0)
+	Function_2.Size = UDim2.new(0.646,0,0.81,0)
+	Function_2.Text = "Min Generation"
+	Function_2.TextColor3 = Color3.new(1,1,1)
+	Function_2.TextScaled = true
+	Function_2.TextSize = 14
+	Function_2.TextWrapped = true
+	Function_2.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_4 = Instance.new("UITextSizeConstraint",Function_2) do
+	UITextSizeConstraint_4.MaxTextSize = 53
+end
+local UIStroke_23 = Instance.new("UIStroke",Function_2) do
+	UIStroke_23:SetAttribute("OriginalThickness",1)
+	UIStroke_23:AddTag("ScreenStroke")
+	UIStroke_23:AddTag("UIStroke")
+	UIStroke_23.Thickness = 0.942
+end
+local Buttons_2 = Instance.new("Frame",MinGeneration) do
+	Buttons_2.Name = "Buttons"
+	Buttons_2.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_2.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_2.BackgroundTransparency = 1
+	Buttons_2.BorderColor3 = Color3.new(0,0,0)
+	Buttons_2.BorderSizePixel = 0
+	Buttons_2.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_2.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_2 = Instance.new("TextBox",Buttons_2) do
+	Text_2.Name = "Text"
+	Text_2.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_2.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_2.BorderColor3 = Color3.new(0,0,0)
+	Text_2.BorderSizePixel = 0
+	Text_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_2.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_2.PlaceholderText = "Generation here"
+	Text_2.Position = UDim2.new(0.5,0,0.5,0)
+	Text_2.Size = UDim2.new(1,0,1,0)
+	Text_2.Text = ""
+	Text_2.TextColor3 = Color3.new(1,1,1)
+	Text_2.TextScaled = true
+	Text_2.TextSize = 14
+	Text_2.TextWrapped = true
+end
+local MaxGeneration = Instance.new("Frame",Config_1) do
+	MaxGeneration.Name = "MaxGeneration"
+	MaxGeneration.BackgroundColor3 = Color3.new(0,0,0)
+	MaxGeneration.BackgroundTransparency = 0.5
+	MaxGeneration.BorderColor3 = Color3.new(0,0,0)
+	MaxGeneration.BorderSizePixel = 0
+	MaxGeneration.Position = UDim2.new(0.021,0,0,0)
+	MaxGeneration.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_3 = Instance.new("TextLabel",MaxGeneration) do
+	Function_3.Name = "Function"
+	Function_3.BackgroundColor3 = Color3.new(1,1,1)
+	Function_3.BackgroundTransparency = 1
+	Function_3.BorderColor3 = Color3.new(0,0,0)
+	Function_3.BorderSizePixel = 0
+	Function_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_3.Position = UDim2.new(0.024,0,0.088,0)
+	Function_3.Size = UDim2.new(0.646,0,0.81,0)
+	Function_3.Text = "Max Generation"
+	Function_3.TextColor3 = Color3.new(1,1,1)
+	Function_3.TextScaled = true
+	Function_3.TextSize = 14
+	Function_3.TextWrapped = true
+	Function_3.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_5 = Instance.new("UITextSizeConstraint",Function_3) do
+	UITextSizeConstraint_5.MaxTextSize = 53
+end
+local UIStroke_24 = Instance.new("UIStroke",Function_3) do
+	UIStroke_24:SetAttribute("OriginalThickness",1)
+	UIStroke_24:AddTag("ScreenStroke")
+	UIStroke_24:AddTag("UIStroke")
+	UIStroke_24.Thickness = 0.942
+end
+local Buttons_3 = Instance.new("Frame",MaxGeneration) do
+	Buttons_3.Name = "Buttons"
+	Buttons_3.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_3.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_3.BackgroundTransparency = 1
+	Buttons_3.BorderColor3 = Color3.new(0,0,0)
+	Buttons_3.BorderSizePixel = 0
+	Buttons_3.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_3.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_3 = Instance.new("TextBox",Buttons_3) do
+	Text_3.Name = "Text"
+	Text_3.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_3.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_3.BorderColor3 = Color3.new(0,0,0)
+	Text_3.BorderSizePixel = 0
+	Text_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_3.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_3.PlaceholderText = "Generation here"
+	Text_3.Position = UDim2.new(0.5,0,0.5,0)
+	Text_3.Size = UDim2.new(1,0,1,0)
+	Text_3.Text = ""
+	Text_3.TextColor3 = Color3.new(1,1,1)
+	Text_3.TextScaled = true
+	Text_3.TextSize = 14
+	Text_3.TextWrapped = true
+end
+local General = Instance.new("TextLabel",Config_1) do
+	General.Name = "General"
+	General.AnchorPoint = Vector2.new(0.5,0.5)
+	General.BackgroundColor3 = Color3.new(1,1,1)
+	General.BackgroundTransparency = 1
+	General.BorderColor3 = Color3.new(0,0,0)
+	General.BorderSizePixel = 0
+	General.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	General.LayoutOrder = -1
+	General.Position = UDim2.new(0.584,0,0.062,0)
+	General.Size = UDim2.new(0.943,0,0.078,0)
+	General.Text = "General"
+	General.TextColor3 = Color3.new(1,1,1)
+	General.TextScaled = true
+	General.TextSize = 14
+	General.TextWrapped = true
+	General.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_25 = Instance.new("UIStroke",General) do
+	UIStroke_25:SetAttribute("OriginalThickness",2)
+	UIStroke_25:AddTag("ScreenStroke")
+	UIStroke_25:AddTag("UIStroke")
+	UIStroke_25.Thickness = 1.476
+end
+local Other = Instance.new("TextLabel",Config_1) do
+	Other.Name = "Other"
+	Other.AnchorPoint = Vector2.new(0.5,0.5)
+	Other.BackgroundColor3 = Color3.new(1,1,1)
+	Other.BackgroundTransparency = 1
+	Other.BorderColor3 = Color3.new(0,0,0)
+	Other.BorderSizePixel = 0
+	Other.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Other.LayoutOrder = 1
+	Other.Position = UDim2.new(0.584,0,0.062,0)
+	Other.Size = UDim2.new(0.943,0,0.078,0)
+	Other.Text = "Other"
+	Other.TextColor3 = Color3.new(1,1,1)
+	Other.TextScaled = true
+	Other.TextSize = 14
+	Other.TextWrapped = true
+	Other.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_26 = Instance.new("UIStroke",Other) do
+	UIStroke_26:SetAttribute("OriginalThickness",2)
+	UIStroke_26:AddTag("ScreenStroke")
+	UIStroke_26:AddTag("UIStroke")
+	UIStroke_26.Thickness = 1.476
+end
+local AllowedBrainrots = Instance.new("Frame",Config_1) do
+	AllowedBrainrots.Name = "AllowedBrainrots"
+	AllowedBrainrots.BackgroundColor3 = Color3.new(0,0,0)
+	AllowedBrainrots.BackgroundTransparency = 0.5
+	AllowedBrainrots.BorderColor3 = Color3.new(0,0,0)
+	AllowedBrainrots.BorderSizePixel = 0
+	AllowedBrainrots.LayoutOrder = 2
+	AllowedBrainrots.Position = UDim2.new(0.021,0,0,0)
+	AllowedBrainrots.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_4 = Instance.new("TextLabel",AllowedBrainrots) do
+	Function_4.Name = "Function"
+	Function_4.BackgroundColor3 = Color3.new(1,1,1)
+	Function_4.BackgroundTransparency = 1
+	Function_4.BorderColor3 = Color3.new(0,0,0)
+	Function_4.BorderSizePixel = 0
+	Function_4.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_4.Position = UDim2.new(0.024,0,0.088,0)
+	Function_4.Size = UDim2.new(0.646,0,0.81,0)
+	Function_4.Text = "Allowed Brainrots"
+	Function_4.TextColor3 = Color3.new(1,1,1)
+	Function_4.TextScaled = true
+	Function_4.TextSize = 14
+	Function_4.TextWrapped = true
+	Function_4.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_6 = Instance.new("UITextSizeConstraint",Function_4) do
+	UITextSizeConstraint_6.MaxTextSize = 53
+end
+local UIStroke_27 = Instance.new("UIStroke",Function_4) do
+	UIStroke_27:SetAttribute("OriginalThickness",1)
+	UIStroke_27:AddTag("ScreenStroke")
+	UIStroke_27:AddTag("UIStroke")
+	UIStroke_27.Thickness = 0.942
+end
+local Buttons_4 = Instance.new("Frame",AllowedBrainrots) do
+	Buttons_4.Name = "Buttons"
+	Buttons_4.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_4.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_4.BackgroundTransparency = 1
+	Buttons_4.BorderColor3 = Color3.new(0,0,0)
+	Buttons_4.BorderSizePixel = 0
+	Buttons_4.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_4.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Button_1 = Instance.new("ImageButton",Buttons_4) do
+	Button_1.Name = "Button"
+	Button_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Button_1.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Button_1.BorderColor3 = Color3.new(0,0,0)
+	Button_1.BorderSizePixel = 0
+	Button_1.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Button_1.ImageTransparency = 1
+	Button_1.Position = UDim2.new(0.5,0,0.5,0)
+	Button_1.Size = UDim2.new(1,0,1,0)
+end
+
+local Text_4 = Instance.new("TextLabel",Button_1) do
+	Text_4.Name = "Text"
+	Text_4.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_4.BackgroundColor3 = Color3.new(1,1,1)
+	Text_4.BackgroundTransparency = 1
+	Text_4.BorderColor3 = Color3.new(0,0,0)
+	Text_4.BorderSizePixel = 0
+	Text_4.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_4.Position = UDim2.new(0.5,0,0.5,0)
+	Text_4.Size = UDim2.new(1,0,0.9,0)
+	Text_4.Text = "View"
+	Text_4.TextColor3 = Color3.new(1,1,1)
+	Text_4.TextScaled = true
+	Text_4.TextSize = 14
+	Text_4.TextWrapped = true
+end
+
+local UITextSizeConstraint_7 = Instance.new("UITextSizeConstraint",Text_4) do
+	UITextSizeConstraint_7.MaxTextSize = 67
+end
+local UIStroke_28 = Instance.new("UIStroke",Text_4) do
+	UIStroke_28:SetAttribute("OriginalThickness",1.5)
+	UIStroke_28:AddTag("ScreenStroke")
+	UIStroke_28:AddTag("UIStroke")
+	UIStroke_28.Color = Color3.new(0.008,0.22,0)
+	UIStroke_28.Thickness = 1.413
+end
+local UIStroke_29 = Instance.new("UIStroke",Button_1) do
+	UIStroke_29:SetAttribute("OriginalThickness",1.5)
+	UIStroke_29:AddTag("ScreenStroke")
+	UIStroke_29:AddTag("UIStroke")
+	UIStroke_29.Color = Color3.new(0,0.255,0.027)
+	UIStroke_29.Thickness = 1.413
+end
+local BlacklistedBrainrots = Instance.new("Frame",Config_1) do
+	BlacklistedBrainrots.Name = "BlacklistedBrainrots"
+	BlacklistedBrainrots.BackgroundColor3 = Color3.new(0,0,0)
+	BlacklistedBrainrots.BackgroundTransparency = 0.5
+	BlacklistedBrainrots.BorderColor3 = Color3.new(0,0,0)
+	BlacklistedBrainrots.BorderSizePixel = 0
+	BlacklistedBrainrots.LayoutOrder = 2
+	BlacklistedBrainrots.Position = UDim2.new(0.021,0,0,0)
+	BlacklistedBrainrots.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_5 = Instance.new("TextLabel",BlacklistedBrainrots) do
+	Function_5.Name = "Function"
+	Function_5.BackgroundColor3 = Color3.new(1,1,1)
+	Function_5.BackgroundTransparency = 1
+	Function_5.BorderColor3 = Color3.new(0,0,0)
+	Function_5.BorderSizePixel = 0
+	Function_5.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_5.Position = UDim2.new(0.024,0,0.088,0)
+	Function_5.Size = UDim2.new(0.646,0,0.81,0)
+	Function_5.Text = "Blacklisted Brainrots"
+	Function_5.TextColor3 = Color3.new(1,1,1)
+	Function_5.TextScaled = true
+	Function_5.TextSize = 14
+	Function_5.TextWrapped = true
+	Function_5.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_8 = Instance.new("UITextSizeConstraint",Function_5) do
+	UITextSizeConstraint_8.MaxTextSize = 53
+end
+local UIStroke_30 = Instance.new("UIStroke",Function_5) do
+	UIStroke_30:SetAttribute("OriginalThickness",1)
+	UIStroke_30:AddTag("ScreenStroke")
+	UIStroke_30:AddTag("UIStroke")
+	UIStroke_30.Thickness = 0.942
+end
+local Buttons_5 = Instance.new("Frame",BlacklistedBrainrots) do
+	Buttons_5.Name = "Buttons"
+	Buttons_5.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_5.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_5.BackgroundTransparency = 1
+	Buttons_5.BorderColor3 = Color3.new(0,0,0)
+	Buttons_5.BorderSizePixel = 0
+	Buttons_5.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_5.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Button_2 = Instance.new("ImageButton",Buttons_5) do
+	Button_2.Name = "Button"
+	Button_2.AnchorPoint = Vector2.new(0.5,0.5)
+	Button_2.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Button_2.BorderColor3 = Color3.new(0,0,0)
+	Button_2.BorderSizePixel = 0
+	Button_2.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Button_2.ImageTransparency = 1
+	Button_2.Position = UDim2.new(0.5,0,0.5,0)
+	Button_2.Size = UDim2.new(1,0,1,0)
+end
+
+local Text_5 = Instance.new("TextLabel",Button_2) do
+	Text_5.Name = "Text"
+	Text_5.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_5.BackgroundColor3 = Color3.new(1,1,1)
+	Text_5.BackgroundTransparency = 1
+	Text_5.BorderColor3 = Color3.new(0,0,0)
+	Text_5.BorderSizePixel = 0
+	Text_5.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_5.Position = UDim2.new(0.5,0,0.5,0)
+	Text_5.Size = UDim2.new(1,0,0.9,0)
+	Text_5.Text = "View"
+	Text_5.TextColor3 = Color3.new(1,1,1)
+	Text_5.TextScaled = true
+	Text_5.TextSize = 14
+	Text_5.TextWrapped = true
+end
+
+local UITextSizeConstraint_9 = Instance.new("UITextSizeConstraint",Text_5) do
+	UITextSizeConstraint_9.MaxTextSize = 67
+end
+local UIStroke_31 = Instance.new("UIStroke",Text_5) do
+	UIStroke_31:SetAttribute("OriginalThickness",1.5)
+	UIStroke_31:AddTag("ScreenStroke")
+	UIStroke_31:AddTag("UIStroke")
+	UIStroke_31.Color = Color3.new(0.008,0.22,0)
+	UIStroke_31.Thickness = 1.413
+end
+local UIStroke_32 = Instance.new("UIStroke",Button_2) do
+	UIStroke_32:SetAttribute("OriginalThickness",1.5)
+	UIStroke_32:AddTag("ScreenStroke")
+	UIStroke_32:AddTag("UIStroke")
+	UIStroke_32.Color = Color3.new(0,0.255,0.027)
+	UIStroke_32.Thickness = 1.413
+end
+local Other_1 = Instance.new("TextLabel",Config_1) do
+	Other_1.Name = "Other"
+	Other_1.AnchorPoint = Vector2.new(0.5,0.5)
+	Other_1.BackgroundColor3 = Color3.new(1,1,1)
+	Other_1.BackgroundTransparency = 1
+	Other_1.BorderColor3 = Color3.new(0,0,0)
+	Other_1.BorderSizePixel = 0
+	Other_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Other_1.LayoutOrder = 3
+	Other_1.Position = UDim2.new(0.584,0,0.062,0)
+	Other_1.Size = UDim2.new(0.943,0,0.078,0)
+	Other_1.Text = "Retry Attempts"
+	Other_1.TextColor3 = Color3.new(1,1,1)
+	Other_1.TextScaled = true
+	Other_1.TextSize = 14
+	Other_1.TextWrapped = true
+	Other_1.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_33 = Instance.new("UIStroke",Other_1) do
+	UIStroke_33:SetAttribute("OriginalThickness",2)
+	UIStroke_33:AddTag("ScreenStroke")
+	UIStroke_33:AddTag("UIStroke")
+	UIStroke_33.Thickness = 1.476
+end
+local Retry100M = Instance.new("Frame",Config_1) do
+	Retry100M.Name = "Retry100M"
+	Retry100M.BackgroundColor3 = Color3.new(0,0,0)
+	Retry100M.BackgroundTransparency = 0.5
+	Retry100M.BorderColor3 = Color3.new(0,0,0)
+	Retry100M.BorderSizePixel = 0
+	Retry100M.LayoutOrder = 4
+	Retry100M.Position = UDim2.new(0.021,0,0,0)
+	Retry100M.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_6 = Instance.new("TextLabel",Retry100M) do
+	Function_6.Name = "Function"
+	Function_6.BackgroundColor3 = Color3.new(1,1,1)
+	Function_6.BackgroundTransparency = 1
+	Function_6.BorderColor3 = Color3.new(0,0,0)
+	Function_6.BorderSizePixel = 0
+	Function_6.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_6.Position = UDim2.new(0.024,0,0.088,0)
+	Function_6.Size = UDim2.new(0.646,0,0.81,0)
+	Function_6.Text = "100M+"
+	Function_6.TextColor3 = Color3.new(1,1,1)
+	Function_6.TextScaled = true
+	Function_6.TextSize = 14
+	Function_6.TextWrapped = true
+	Function_6.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_10 = Instance.new("UITextSizeConstraint",Function_6) do
+	UITextSizeConstraint_10.MaxTextSize = 53
+end
+local UIStroke_34 = Instance.new("UIStroke",Function_6) do
+	UIStroke_34:SetAttribute("OriginalThickness",1)
+	UIStroke_34:AddTag("ScreenStroke")
+	UIStroke_34:AddTag("UIStroke")
+	UIStroke_34.Thickness = 0.942
+end
+local Buttons_6 = Instance.new("Frame",Retry100M) do
+	Buttons_6.Name = "Buttons"
+	Buttons_6.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_6.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_6.BackgroundTransparency = 1
+	Buttons_6.BorderColor3 = Color3.new(0,0,0)
+	Buttons_6.BorderSizePixel = 0
+	Buttons_6.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_6.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_6 = Instance.new("TextBox",Buttons_6) do
+	Text_6.Name = "Text"
+	Text_6.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_6.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_6.BorderColor3 = Color3.new(0,0,0)
+	Text_6.BorderSizePixel = 0
+	Text_6.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_6.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_6.PlaceholderText = "Attempts"
+	Text_6.Position = UDim2.new(0.5,0,0.5,0)
+	Text_6.Size = UDim2.new(1,0,1,0)
+	Text_6.Text = ""
+	Text_6.TextColor3 = Color3.new(1,1,1)
+	Text_6.TextScaled = true
+	Text_6.TextSize = 14
+	Text_6.TextWrapped = true
+end
+local Retry50M = Instance.new("Frame",Config_1) do
+	Retry50M.Name = "Retry50M"
+	Retry50M.BackgroundColor3 = Color3.new(0,0,0)
+	Retry50M.BackgroundTransparency = 0.5
+	Retry50M.BorderColor3 = Color3.new(0,0,0)
+	Retry50M.BorderSizePixel = 0
+	Retry50M.LayoutOrder = 4
+	Retry50M.Position = UDim2.new(0.021,0,0,0)
+	Retry50M.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_7 = Instance.new("TextLabel",Retry50M) do
+	Function_7.Name = "Function"
+	Function_7.BackgroundColor3 = Color3.new(1,1,1)
+	Function_7.BackgroundTransparency = 1
+	Function_7.BorderColor3 = Color3.new(0,0,0)
+	Function_7.BorderSizePixel = 0
+	Function_7.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_7.Position = UDim2.new(0.024,0,0.088,0)
+	Function_7.Size = UDim2.new(0.646,0,0.81,0)
+	Function_7.Text = "50M+"
+	Function_7.TextColor3 = Color3.new(1,1,1)
+	Function_7.TextScaled = true
+	Function_7.TextSize = 14
+	Function_7.TextWrapped = true
+	Function_7.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_11 = Instance.new("UITextSizeConstraint",Function_7) do
+	UITextSizeConstraint_11.MaxTextSize = 53
+end
+local UIStroke_35 = Instance.new("UIStroke",Function_7) do
+	UIStroke_35:SetAttribute("OriginalThickness",1)
+	UIStroke_35:AddTag("ScreenStroke")
+	UIStroke_35:AddTag("UIStroke")
+	UIStroke_35.Thickness = 0.942
+end
+local Buttons_7 = Instance.new("Frame",Retry50M) do
+	Buttons_7.Name = "Buttons"
+	Buttons_7.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_7.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_7.BackgroundTransparency = 1
+	Buttons_7.BorderColor3 = Color3.new(0,0,0)
+	Buttons_7.BorderSizePixel = 0
+	Buttons_7.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_7.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_7 = Instance.new("TextBox",Buttons_7) do
+	Text_7.Name = "Text"
+	Text_7.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_7.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_7.BorderColor3 = Color3.new(0,0,0)
+	Text_7.BorderSizePixel = 0
+	Text_7.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_7.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_7.PlaceholderText = "Attempts"
+	Text_7.Position = UDim2.new(0.5,0,0.5,0)
+	Text_7.Size = UDim2.new(1,0,1,0)
+	Text_7.Text = ""
+	Text_7.TextColor3 = Color3.new(1,1,1)
+	Text_7.TextScaled = true
+	Text_7.TextSize = 14
+	Text_7.TextWrapped = true
+end
+local Retry10M = Instance.new("Frame",Config_1) do
+	Retry10M.Name = "Retry10M"
+	Retry10M.BackgroundColor3 = Color3.new(0,0,0)
+	Retry10M.BackgroundTransparency = 0.5
+	Retry10M.BorderColor3 = Color3.new(0,0,0)
+	Retry10M.BorderSizePixel = 0
+	Retry10M.LayoutOrder = 4
+	Retry10M.Position = UDim2.new(0.021,0,0,0)
+	Retry10M.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_8 = Instance.new("TextLabel",Retry10M) do
+	Function_8.Name = "Function"
+	Function_8.BackgroundColor3 = Color3.new(1,1,1)
+	Function_8.BackgroundTransparency = 1
+	Function_8.BorderColor3 = Color3.new(0,0,0)
+	Function_8.BorderSizePixel = 0
+	Function_8.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_8.Position = UDim2.new(0.024,0,0.088,0)
+	Function_8.Size = UDim2.new(0.646,0,0.81,0)
+	Function_8.Text = "10M+"
+	Function_8.TextColor3 = Color3.new(1,1,1)
+	Function_8.TextScaled = true
+	Function_8.TextSize = 14
+	Function_8.TextWrapped = true
+	Function_8.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_12 = Instance.new("UITextSizeConstraint",Function_8) do
+	UITextSizeConstraint_12.MaxTextSize = 53
+end
+local UIStroke_36 = Instance.new("UIStroke",Function_8) do
+	UIStroke_36:SetAttribute("OriginalThickness",1)
+	UIStroke_36:AddTag("ScreenStroke")
+	UIStroke_36:AddTag("UIStroke")
+	UIStroke_36.Thickness = 0.942
+end
+local Buttons_8 = Instance.new("Frame",Retry10M) do
+	Buttons_8.Name = "Buttons"
+	Buttons_8.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_8.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_8.BackgroundTransparency = 1
+	Buttons_8.BorderColor3 = Color3.new(0,0,0)
+	Buttons_8.BorderSizePixel = 0
+	Buttons_8.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_8.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_8 = Instance.new("TextBox",Buttons_8) do
+	Text_8.Name = "Text"
+	Text_8.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_8.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_8.BorderColor3 = Color3.new(0,0,0)
+	Text_8.BorderSizePixel = 0
+	Text_8.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_8.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_8.PlaceholderText = "Attempts"
+	Text_8.Position = UDim2.new(0.5,0,0.5,0)
+	Text_8.Size = UDim2.new(1,0,1,0)
+	Text_8.Text = ""
+	Text_8.TextColor3 = Color3.new(1,1,1)
+	Text_8.TextScaled = true
+	Text_8.TextSize = 14
+	Text_8.TextWrapped = true
+end
+local Retry5M = Instance.new("Frame",Config_1) do
+	Retry5M.Name = "Retry5M"
+	Retry5M.BackgroundColor3 = Color3.new(0,0,0)
+	Retry5M.BackgroundTransparency = 0.5
+	Retry5M.BorderColor3 = Color3.new(0,0,0)
+	Retry5M.BorderSizePixel = 0
+	Retry5M.LayoutOrder = 4
+	Retry5M.Position = UDim2.new(0.021,0,0,0)
+	Retry5M.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_9 = Instance.new("TextLabel",Retry5M) do
+	Function_9.Name = "Function"
+	Function_9.BackgroundColor3 = Color3.new(1,1,1)
+	Function_9.BackgroundTransparency = 1
+	Function_9.BorderColor3 = Color3.new(0,0,0)
+	Function_9.BorderSizePixel = 0
+	Function_9.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_9.Position = UDim2.new(0.024,0,0.088,0)
+	Function_9.Size = UDim2.new(0.646,0,0.81,0)
+	Function_9.Text = "5M+"
+	Function_9.TextColor3 = Color3.new(1,1,1)
+	Function_9.TextScaled = true
+	Function_9.TextSize = 14
+	Function_9.TextWrapped = true
+	Function_9.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_13 = Instance.new("UITextSizeConstraint",Function_9) do
+	UITextSizeConstraint_13.MaxTextSize = 53
+end
+local UIStroke_37 = Instance.new("UIStroke",Function_9) do
+	UIStroke_37:SetAttribute("OriginalThickness",1)
+	UIStroke_37:AddTag("ScreenStroke")
+	UIStroke_37:AddTag("UIStroke")
+	UIStroke_37.Thickness = 0.942
+end
+local Buttons_9 = Instance.new("Frame",Retry5M) do
+	Buttons_9.Name = "Buttons"
+	Buttons_9.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_9.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_9.BackgroundTransparency = 1
+	Buttons_9.BorderColor3 = Color3.new(0,0,0)
+	Buttons_9.BorderSizePixel = 0
+	Buttons_9.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_9.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Text_9 = Instance.new("TextBox",Buttons_9) do
+	Text_9.Name = "Text"
+	Text_9.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_9.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Text_9.BorderColor3 = Color3.new(0,0,0)
+	Text_9.BorderSizePixel = 0
+	Text_9.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_9.PlaceholderColor3 = Color3.new(0.624,0.624,0.624)
+	Text_9.PlaceholderText = "Attempts"
+	Text_9.Position = UDim2.new(0.5,0,0.5,0)
+	Text_9.Size = UDim2.new(1,0,1,0)
+	Text_9.Text = ""
+	Text_9.TextColor3 = Color3.new(1,1,1)
+	Text_9.TextScaled = true
+	Text_9.TextSize = 14
+	Text_9.TextWrapped = true
+end
+local BrainrotList = Instance.new("Frame",Content) do
+	BrainrotList:SetAttribute("Type","Allowed")
+	BrainrotList.Name = "BrainrotList"
+	BrainrotList.BackgroundColor3 = Color3.new(0,0,0)
+	BrainrotList.BackgroundTransparency = 0.5
+	BrainrotList.BorderColor3 = Color3.new(0,0,0)
+	BrainrotList.BorderSizePixel = 0
+	BrainrotList.Position = UDim2.new(1.006,0,0.103,0)
+	BrainrotList.Size = UDim2.new(0.362,0,0.902,0)
+	BrainrotList.Visible = false
+end
+
+local BrainrotList_1 = Instance.new("ScrollingFrame",BrainrotList) do
+	BrainrotList_1.Name = "BrainrotList"
+	BrainrotList_1.AnchorPoint = Vector2.new(0.5,0.5)
+	BrainrotList_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	BrainrotList_1.BackgroundColor3 = Color3.new(1,1,1)
+	BrainrotList_1.BackgroundTransparency = 1
+	BrainrotList_1.BorderColor3 = Color3.new(0,0,0)
+	BrainrotList_1.BorderSizePixel = 0
+	BrainrotList_1.CanvasSize = UDim2.new(0,0,1,0)
+	BrainrotList_1.Position = UDim2.new(0.499,0,0.497,0)
+	BrainrotList_1.ScrollBarImageColor3 = Color3.new(0,0,0)
+	BrainrotList_1.ScrollBarThickness = 0
+	BrainrotList_1.ScrollingDirection = Enum.ScrollingDirection.Y
+	BrainrotList_1.Size = UDim2.new(1.003,0,0.994,0)
+end
+
+local UIListLayout_4 = Instance.new("UIListLayout",BrainrotList_1) do
+	UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout_4.Padding = UDim.new(0.023,0)
+	UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+end
+local Padding_3 = Instance.new("Frame",BrainrotList_1) do
+	Padding_3.Name = "Padding"
+	Padding_3.AnchorPoint = Vector2.new(0.5,0.5)
+	Padding_3.BackgroundColor3 = Color3.new(1,1,1)
+	Padding_3.BackgroundTransparency = 1
+	Padding_3.BorderColor3 = Color3.new(0,0,0)
+	Padding_3.BorderSizePixel = 0
+	Padding_3.LayoutOrder = -99
+	Padding_3.Position = UDim2.new(0.045,0,0.112,0)
+	Padding_3.Size = UDim2.new(1,0,0,0)
+end
+local Template_2 = Instance.new("ImageButton",BrainrotList_1) do
+	Template_2.Name = "Template"
+	Template_2.AnchorPoint = Vector2.new(0.5,0.5)
+	Template_2.BackgroundColor3 = Color3.new(0,0,0)
+	Template_2.BackgroundTransparency = 0.4
+	Template_2.BorderColor3 = Color3.new(0,0,0)
+	Template_2.BorderSizePixel = 0
+	Template_2.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Template_2.ImageTransparency = 1
+	Template_2.Position = UDim2.new(0.5,0,0.098,0)
+	Template_2.Size = UDim2.new(0.915,0,0.151,0)
+	Template_2.Visible = false
+end
+
+local UIStroke_38 = Instance.new("UIStroke",Template_2)
+local BrainrotBg_1 = Instance.new("ImageLabel",Template_2) do
+	BrainrotBg_1.Name = "BrainrotBg"
+	BrainrotBg_1.AnchorPoint = Vector2.new(0,0.5)
+	BrainrotBg_1.BackgroundColor3 = Color3.new(0,0,0)
+	BrainrotBg_1.BackgroundTransparency = 0.5
+	BrainrotBg_1.BorderColor3 = Color3.new(0,0,0)
+	BrainrotBg_1.BorderSizePixel = 0
+	BrainrotBg_1.LayoutOrder = 2
+	BrainrotBg_1.Position = UDim2.new(0.02,0,0.483,0)
+	BrainrotBg_1.ScaleType = Enum.ScaleType.Fit
+	BrainrotBg_1.Size = UDim2.new(0.321,0,0.715,0)
+	BrainrotBg_1.ZIndex = 2
+end
+
+local UIStroke_39 = Instance.new("UIStroke",BrainrotBg_1) do
+	UIStroke_39.Color = Color3.new(1,1,1)
+end
+local ViewportFrame_3 = Instance.new("ViewportFrame",BrainrotBg_1) do
+	ViewportFrame_3.Ambient = Color3.new(1,1,1)
+	ViewportFrame_3.AnchorPoint = Vector2.new(0.5,0.5)
+	ViewportFrame_3.BackgroundColor3 = Color3.new(0,0,0)
+	ViewportFrame_3.BackgroundTransparency = 1
+	ViewportFrame_3.BorderColor3 = Color3.new(0,0,0)
+	ViewportFrame_3.BorderSizePixel = 0
+	ViewportFrame_3.LightColor = Color3.new(1,1,1)
+	ViewportFrame_3.Position = UDim2.new(0.5,0,0.5,0)
+	ViewportFrame_3.Size = UDim2.new(1,0,1,0)
+end
+local NameLabel_2 = Instance.new("TextLabel",Template_2) do
+	NameLabel_2.Name = "NameLabel"
+	NameLabel_2.AnchorPoint = Vector2.new(0.5,0.5)
+	NameLabel_2.BackgroundColor3 = Color3.new(1,1,1)
+	NameLabel_2.BackgroundTransparency = 1
+	NameLabel_2.BorderColor3 = Color3.new(0,0,0)
+	NameLabel_2.BorderSizePixel = 0
+	NameLabel_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	NameLabel_2.LayoutOrder = 1
+	NameLabel_2.Position = UDim2.new(0.709,0,0.493,0)
+	NameLabel_2.Size = UDim2.new(0.567,0,0.249,0)
+	NameLabel_2.Text = "{DisplayName}"
+	NameLabel_2.TextColor3 = Color3.new(1,1,1)
+	NameLabel_2.TextScaled = true
+	NameLabel_2.TextSize = 14
+	NameLabel_2.TextWrapped = true
+	NameLabel_2.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_40 = Instance.new("UIStroke",NameLabel_2) do
+	UIStroke_40.Thickness = 2
+end
+local NameLabel_3 = Instance.new("TextLabel",BrainrotList) do
+	NameLabel_3.Name = "NameLabel"
+	NameLabel_3.AnchorPoint = Vector2.new(0.5,0.5)
+	NameLabel_3.BackgroundColor3 = Color3.new(1,1,1)
+	NameLabel_3.BackgroundTransparency = 1
+	NameLabel_3.BorderColor3 = Color3.new(0,0,0)
+	NameLabel_3.BorderSizePixel = 0
+	NameLabel_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	NameLabel_3.LayoutOrder = 1
+	NameLabel_3.Position = UDim2.new(0.502,0,-0.122,0)
+	NameLabel_3.Size = UDim2.new(0.567,0,0.249,0)
+	NameLabel_3.Text = "Select Brainrots"
+	NameLabel_3.TextColor3 = Color3.new(1,1,1)
+	NameLabel_3.TextScaled = true
+	NameLabel_3.TextSize = 14
+	NameLabel_3.TextWrapped = true
+	NameLabel_3.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UIStroke_41 = Instance.new("UIStroke",NameLabel_3) do
+	UIStroke_41.Thickness = 2
+end
+local Confirm = Instance.new("ImageButton",BrainrotList) do
+	Confirm.Name = "Confirm"
+	Confirm.AnchorPoint = Vector2.new(0.5,0.5)
+	Confirm.BackgroundColor3 = Color3.new(0.192,0.639,0)
+	Confirm.BorderColor3 = Color3.new(0,0,0)
+	Confirm.BorderSizePixel = 0
+	Confirm.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Confirm.ImageTransparency = 1
+	Confirm.Position = UDim2.new(0.254,0,1.101,0)
+	Confirm.Size = UDim2.new(0.394,0,0.136,0)
+end
+
+local UIStroke_42 = Instance.new("UIStroke")
+UIStroke_42.Parent = Confirm
+
+UIStroke_42.Color = Color3.new(0, 0.255, 0.027)
+UIStroke_42.Thickness = 1.413
+
+local Text_10 = Instance.new("TextLabel",Confirm) do
+	Text_10.Name = "Text"
+	Text_10.AnchorPoint = Vector2.new(0.5,0.5)
+	Text_10.BackgroundColor3 = Color3.new(1,1,1)
+	Text_10.BackgroundTransparency = 1
+	Text_10.BorderColor3 = Color3.new(0,0,0)
+	Text_10.BorderSizePixel = 0
+	Text_10.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Text_10.Position = UDim2.new(0.5,0,0.5,0)
+	Text_10.Size = UDim2.new(1,0,0.9,0)
+	Text_10.Text = "Confirm"
+	Text_10.TextColor3 = Color3.new(1,1,1)
+	Text_10.TextScaled = true
+	Text_10.TextSize = 14
+	Text_10.TextWrapped = true
+end
+
+local UITextSizeConstraint_14 = Instance.new("UITextSizeConstraint",Text_10) do
+	UITextSizeConstraint_14.MaxTextSize = 67
+end
+local UIStroke_43 = Instance.new("UIStroke",Text_10) do
+	UIStroke_43:SetAttribute("OriginalThickness",1.5)
+	UIStroke_43:AddTag("ScreenStroke")
+	UIStroke_43:AddTag("UIStroke")
+	UIStroke_43.Color = Color3.new(0.008,0.22,0)
+	UIStroke_43.Thickness = 1.413
+end
+;(function():()
+	local Cancel = Instance.new("ImageButton",BrainrotList) do
+		Cancel.Name = "Cancel"
+		Cancel.AnchorPoint = Vector2.new(0.5,0.5)
+		Cancel.BackgroundColor3 = Color3.new(0.506,0,0.008)
+		Cancel.BorderColor3 = Color3.new(0,0,0)
+		Cancel.BorderSizePixel = 0
+		Cancel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Cancel.ImageTransparency = 1
+		Cancel.Position = UDim2.new(0.689,0,1.103,0)
+		Cancel.Size = UDim2.new(0.394,0,0.136,0)
+	end
+	
+	local UIStroke_44 = Instance.new("UIStroke",Cancel) do
+		UIStroke_44:SetAttribute("OriginalThickness",1.5)
+		UIStroke_44:AddTag("ScreenStroke")
+		UIStroke_44:AddTag("UIStroke")
+		UIStroke_44.Color = Color3.new(0,0.255,0.027)
+		UIStroke_44.Thickness = 1.413
+	end
+	local Text_11 = Instance.new("TextLabel",Cancel) do
+		Text_11.Name = "Text"
+		Text_11.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_11.BackgroundColor3 = Color3.new(1,1,1)
+		Text_11.BackgroundTransparency = 1
+		Text_11.BorderColor3 = Color3.new(0,0,0)
+		Text_11.BorderSizePixel = 0
+		Text_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_11.Position = UDim2.new(0.5,0,0.5,0)
+		Text_11.Size = UDim2.new(1,0,0.9,0)
+		Text_11.Text = "Cancel"
+		Text_11.TextColor3 = Color3.new(1,1,1)
+		Text_11.TextScaled = true
+		Text_11.TextSize = 14
+		Text_11.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_15 = Instance.new("UITextSizeConstraint",Text_11) do
+		UITextSizeConstraint_15.MaxTextSize = 67
+	end
+	local UIStroke_45 = Instance.new("UIStroke",Text_11) do
+		UIStroke_45:SetAttribute("OriginalThickness",1.5)
+		UIStroke_45:AddTag("ScreenStroke")
+		UIStroke_45:AddTag("UIStroke")
+		UIStroke_45.Color = Color3.new(0.008,0.22,0)
+		UIStroke_45.Thickness = 1.413
+	end		
+	local Header = Instance.new("Frame",Main) do
+		Header.Name = "Header"
+		Header.AnchorPoint = Vector2.new(0.5,0)
+		Header.BackgroundColor3 = Color3.new(1,1,1)
+		Header.BackgroundTransparency = 1
+		Header.BorderColor3 = Color3.new(0,0,0)
+		Header.BorderSizePixel = 0
+		Header.Position = UDim2.new(0.5,0,0.001,0)
+		Header.Size = UDim2.new(0.998,0,0.148,0)
+	end
+	
+	local Main_1 = Instance.new("ImageLabel",Header) do
+		Main_1.Name = "Main"
+		Main_1.AnchorPoint = Vector2.new(0.5,0.5)
+		Main_1.BackgroundColor3 = Color3.new(1,1,1)
+		Main_1.BackgroundTransparency = 1
+		Main_1.BorderColor3 = Color3.new(0,0,0)
+		Main_1.BorderSizePixel = 0
+		Main_1.Image = "rbxassetid://137573329562191"
+		Main_1.Position = UDim2.new(0.5,0,0.5,0)
+		Main_1.ScaleType = Enum.ScaleType.Fit
+		Main_1.Size = UDim2.new(1,0,1,0)
+		Main_1.ZIndex = 0
+	end
+	
+	local UIGradient_3 = Instance.new("UIGradient",Main_1) do
+		UIGradient_3.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
+	end	
+	local Txts = Instance.new("Frame",Header) do
+		Txts.Name = "Txts"
+		Txts.AnchorPoint = Vector2.new(0,0.5)
+		Txts.BackgroundColor3 = Color3.new(1,1,1)
+		Txts.BackgroundTransparency = 1
+		Txts.BorderColor3 = Color3.new(0,0,0)
+		Txts.BorderSizePixel = 0
+		Txts.Position = UDim2.new(0.022,0,0.5,0)
+		Txts.Size = UDim2.new(0.5,0,1,0)
+	end
+	
+	local UIListLayout_5 = Instance.new("UIListLayout",Txts) do
+		UIListLayout_5.Padding = UDim.new(0.035,0)
+		UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_5.VerticalAlignment = Enum.VerticalAlignment.Center
+	end
+	local Txt1 = Instance.new("TextLabel",Txts) do
+		Txt1.Name = "Txt1"
+		Txt1.AnchorPoint = Vector2.new(0.5,0.5)
+		Txt1.BackgroundColor3 = Color3.new(1,1,1)
+		Txt1.BackgroundTransparency = 1
+		Txt1.BorderColor3 = Color3.new(0,0,0)
+		Txt1.BorderSizePixel = 0
+		Txt1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Txt1.LayoutOrder = 1
+		Txt1.Position = UDim2.new(0.5,0,0.5,0)
+		Txt1.Size = UDim2.new(1,0,0.421,0)
+		Txt1.Text = "Meowl Notifier"
+		Txt1.TextColor3 = Color3.new(1,1,1)
+		Txt1.TextScaled = true
+		Txt1.TextSize = 14
+		Txt1.TextWrapped = true
+		Txt1.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_46 = Instance.new("UIStroke",Txt1) do
+		UIStroke_46:SetAttribute("OriginalThickness",2)
+		UIStroke_46:AddTag("ScreenStroke")
+		UIStroke_46:AddTag("UIStroke")
+		UIStroke_46.Thickness = 1.476
+	end	
+	local Txt2 = Instance.new("TextLabel",Txts) do
+		Txt2.Name = "Txt2"
+		Txt2.AnchorPoint = Vector2.new(0.5,0.5)
+		Txt2.BackgroundColor3 = Color3.new(1,1,1)
+		Txt2.BackgroundTransparency = 1
+		Txt2.BorderColor3 = Color3.new(0,0,0)
+		Txt2.BorderSizePixel = 0
+		Txt2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Txt2.LayoutOrder = 2
+		Txt2.Position = UDim2.new(0.5,0,0.5,0)
+		Txt2.Size = UDim2.new(1,0,0.298,0)
+		Txt2.Text = "Logs"
+		Txt2.TextColor3 = Color3.new(0.788,0.788,0.788)
+		Txt2.TextScaled = true
+		Txt2.TextSize = 14
+		Txt2.TextWrapped = true
+		Txt2.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_47 = Instance.new("UIStroke",Txt2) do
+		UIStroke_47:SetAttribute("OriginalThickness",2)
+		UIStroke_47:AddTag("ScreenStroke")
+		UIStroke_47:AddTag("UIStroke")
+		UIStroke_47.Thickness = 1.476
+	end		
+	local Close = Instance.new("ImageButton",Header) do
+		Close.Name = "Close"
+		Close.AnchorPoint = Vector2.new(0.5,0.5)
+		Close.BackgroundColor3 = Color3.new(1,1,1)
+		Close.BackgroundTransparency = 1
+		Close.BorderColor3 = Color3.new(0,0,0)
+		Close.BorderSizePixel = 0
+		Close.HoverImage = "rbxassetid://137110183435251"
+		Close.Image = "rbxassetid://105016554772347"
+		Close.Position = UDim2.new(0.95,0,0.5,0)
+		Close.ScaleType = Enum.ScaleType.Fit
+		Close.Size = UDim2.new(0.087,0,0.877,0)
+	end
+	
+	local Txt = Instance.new("TextLabel",Close) do
+		Txt.Name = "Txt"
+		Txt.AnchorPoint = Vector2.new(0.5,0.5)
+		Txt.BackgroundColor3 = Color3.new(1,1,1)
+		Txt.BackgroundTransparency = 1
+		Txt.BorderColor3 = Color3.new(0,0,0)
+		Txt.BorderSizePixel = 0
+		Txt.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Txt.Position = UDim2.new(0.5,0,0.5,0)
+		Txt.Size = UDim2.new(1,0,0.56,0)
+		Txt.Text = "X"
+		Txt.TextColor3 = Color3.new(1,1,1)
+		Txt.TextScaled = true
+		Txt.TextSize = 14
+		Txt.TextWrapped = true
+	end
+	
+	local UIStroke_48 = Instance.new("UIStroke",Txt) do
+		UIStroke_48:SetAttribute("OriginalThickness",3)
+		UIStroke_48:AddTag("ScreenStroke")
+		UIStroke_48:AddTag("UIStroke")
+		UIStroke_48.Thickness = 2.214
+	end
+	local UIPadding = Instance.new("UIPadding",Txt) do
+		UIPadding.PaddingLeft = UDim.new(0.01,0)
+		UIPadding.PaddingRight = UDim.new(-0.03,0)
+	end		
+	local meowlbro = Instance.new("Frame",Header) do
+		meowlbro.Name = "meowlbro"
+		meowlbro.AnchorPoint = Vector2.new(0.5,0.5)
+		meowlbro.BackgroundColor3 = Color3.new(1,1,1)
+		meowlbro.BackgroundTransparency = 1
+		meowlbro.BorderColor3 = Color3.new(0,0,0)
+		meowlbro.BorderSizePixel = 0
+		meowlbro.Position = UDim2.new(0.3,0,0.246,0)
+		meowlbro.Size = UDim2.new(0.588,0,0.5,0)
+	end
+	
+	local lucke = Instance.new("ImageLabel",meowlbro) do
+		lucke.Name = "lucke"
+		lucke.AnchorPoint = Vector2.new(0.5,0.5)
+		lucke.BackgroundColor3 = Color3.new(1,1,1)
+		lucke.BackgroundTransparency = 1
+		lucke.BorderColor3 = Color3.new(0,0,0)
+		lucke.BorderSizePixel = 0
+		lucke.Image = "rbxassetid://114748221761549"
+		lucke.Position = UDim2.new(0.565,0,0.724,0)
+		lucke.ScaleType = Enum.ScaleType.Crop
+		lucke.Size = UDim2.new(1,0,1,0)
+		lucke.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	end		
+	local Outline = Instance.new("ImageLabel",Main) do
+		Outline.Name = "Outline"
+		Outline.AnchorPoint = Vector2.new(0.5,0.5)
+		Outline.BackgroundColor3 = Color3.new(1,1,1)
+		Outline.BackgroundTransparency = 1
+		Outline.BorderColor3 = Color3.new(0,0,0)
+		Outline.BorderSizePixel = 0
+		Outline.Image = "rbxassetid://139489652867400"
+		Outline.Position = UDim2.new(0.5,0,0.5,0)
+		Outline.ScaleType = Enum.ScaleType.Fit
+		Outline.Size = UDim2.new(1.003,0,1.005,0)
+		Outline.Visible = false
+		Outline.ZIndex = 2
+	end
+	
+	local UIGradient_4 = Instance.new("UIGradient",Outline) do
+		UIGradient_4.Color = ColorSequence.new(Color3.new(0,0,0))
+	end	
+	local Main_2 = Instance.new("ImageLabel",Main) do
+		Main_2.Name = "Main"
+		Main_2.AnchorPoint = Vector2.new(0.5,0.5)
+		Main_2.BackgroundColor3 = Color3.new(1,1,1)
+		Main_2.BackgroundTransparency = 1
+		Main_2.BorderColor3 = Color3.new(0,0,0)
+		Main_2.BorderSizePixel = 0
+		Main_2.Image = "rbxassetid://76660575181533"
+		Main_2.ImageTransparency = 0.3
+		Main_2.Position = UDim2.new(0.5,0,0.5,0)
+		Main_2.ScaleType = Enum.ScaleType.Fit
+		Main_2.Size = UDim2.new(1,0,1,0)
+		Main_2.ZIndex = -1
+	end
+	
+	local UIGradient_5 = Instance.new("UIGradient",Main_2) do
+		UIGradient_5.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
+	end	
+	local UIListLayout_6 = Instance.new("UIListLayout",Notifier) do
+		UIListLayout_6.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout_6.Padding = UDim.new(0.01,0)
+		UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout_6.VerticalAlignment = Enum.VerticalAlignment.Center
+	end
+	local StatsAndStuff = Instance.new("Frame",Notifier) do
+		StatsAndStuff.Name = "StatsAndStuff"
+		StatsAndStuff.AnchorPoint = Vector2.new(0.5,0.5)
+		StatsAndStuff.BackgroundColor3 = Color3.new(1,1,1)
+		StatsAndStuff.BackgroundTransparency = 0.3
+		StatsAndStuff.BorderColor3 = Color3.new(0,0,0)
+		StatsAndStuff.BorderSizePixel = 0
+		StatsAndStuff.LayoutOrder = 2
+		StatsAndStuff.Position = UDim2.new(0.5,0,1.008,0)
+		StatsAndStuff.Size = UDim2.new(1,0,0.204,0)
+	end
+	
+	local Status = Instance.new("TextLabel",StatsAndStuff) do
+		Status.Name = "Status"
+		Status.AnchorPoint = Vector2.new(0.5,0.5)
+		Status.BackgroundColor3 = Color3.new(1,1,1)
+		Status.BackgroundTransparency = 1
+		Status.BorderColor3 = Color3.new(0,0,0)
+		Status.BorderSizePixel = 0
+		Status.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Status.Position = UDim2.new(0.17,0,0.481,0)
+		Status.Size = UDim2.new(0.197,0,0.734,0)
+		Status.Text = "Disconnected"
+		Status.TextColor3 = Color3.new(1,1,1)
+		Status.TextScaled = true
+		Status.TextSize = 14
+		Status.TextWrapped = true
+		Status.ZIndex = 2
+	end
+	
+	local UIStroke_49 = Instance.new("UIStroke",Status) do
+		UIStroke_49:SetAttribute("OriginalThickness",2)
+		UIStroke_49:AddTag("ScreenStroke")
+		UIStroke_49:AddTag("UIStroke")
+		UIStroke_49.Thickness = 1.476
+	end
+	local UITextSizeConstraint_16 = Instance.new("UITextSizeConstraint",Status) do
+		UITextSizeConstraint_16.MaxTextSize = 33
+	end	
+	local ConnectedDot = Instance.new("TextLabel",StatsAndStuff) do
+		ConnectedDot.Name = "ConnectedDot"
+		ConnectedDot.AnchorPoint = Vector2.new(0.5,0.5)
+		ConnectedDot.BackgroundColor3 = Color3.new(1,1,1)
+		ConnectedDot.BackgroundTransparency = 1
+		ConnectedDot.BorderColor3 = Color3.new(0,0,0)
+		ConnectedDot.BorderSizePixel = 0
+		ConnectedDot.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		ConnectedDot.Position = UDim2.new(0.057,0,0.475,0)
+		ConnectedDot.Size = UDim2.new(0.197,0,0.493,0)
+		ConnectedDot.Text = "•"
+		ConnectedDot.TextColor3 = Color3.new(1,0,0)
+		ConnectedDot.TextScaled = true
+		ConnectedDot.TextSize = 14
+		ConnectedDot.TextWrapped = true
+		ConnectedDot.ZIndex = 2
+	end
+	
+	local UIStroke_50 = Instance.new("UIStroke",ConnectedDot) do
+		UIStroke_50:SetAttribute("OriginalThickness",2)
+		UIStroke_50:AddTag("ScreenStroke")
+		UIStroke_50:AddTag("UIStroke")
+		UIStroke_50.Thickness = 1.476
+	end
+	local UITextSizeConstraint_17 = Instance.new("UITextSizeConstraint",ConnectedDot) do
+		UITextSizeConstraint_17.MaxTextSize = 33
+	end	
+	local Autojoin = Instance.new("TextButton",StatsAndStuff) do
+		Autojoin:SetAttribute("Toggle",false)
+		Autojoin.Name = "Autojoin"
+		Autojoin.AnchorPoint = Vector2.new(0.5,0.5)
+		Autojoin.BackgroundColor3 = Color3.new(1,0,0)
+		Autojoin.BackgroundTransparency = 0.5
+		Autojoin.BorderColor3 = Color3.new(1,1,1)
+		Autojoin.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal)
+		Autojoin.Position = UDim2.new(0.499,0,0.495,0)
+		Autojoin.Size = UDim2.new(0.368,0,0.579,0)
+		Autojoin.Text = ""
+		Autojoin.TextColor3 = Color3.new(1,1,1)
+		Autojoin.TextScaled = true
+		Autojoin.TextSize = 14
+		Autojoin.TextWrapped = true
+	end
+	
+	local UIGradient_6 = Instance.new("UIGradient",Autojoin) do
+		UIGradient_6.Color = ColorSequence.new(Color3.new(0.482,0.639,0.722))
+	end
+	local TextLabel_3 = Instance.new("TextLabel",Autojoin) do
+		TextLabel_3.AnchorPoint = Vector2.new(0.5,0.5)
+		TextLabel_3.BackgroundColor3 = Color3.new(1,1,1)
+		TextLabel_3.BackgroundTransparency = 1
+		TextLabel_3.BorderColor3 = Color3.new(0,0,0)
+		TextLabel_3.BorderSizePixel = 0
+		TextLabel_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		TextLabel_3.LayoutOrder = 1
+		TextLabel_3.Position = UDim2.new(0.499,0,0.499,0)
+		TextLabel_3.Size = UDim2.new(0.85,0,0.55,0)
+		TextLabel_3.Text = "Auto Join"
+		TextLabel_3.TextColor3 = Color3.new(1,1,1)
+		TextLabel_3.TextScaled = true
+		TextLabel_3.TextSize = 14
+		TextLabel_3.TextWrapped = true
+	end
+	
+	local UIStroke_51 = Instance.new("UIStroke",TextLabel_3) do
+		UIStroke_51:SetAttribute("OriginalThickness",2)
+		UIStroke_51:AddTag("ScreenStroke")
+		UIStroke_51:AddTag("UIStroke")
+		UIStroke_51.Thickness = 1.476
+	end		
+	local UIGradient_7 = Instance.new("UIGradient",StatsAndStuff) do
+		UIGradient_7.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
+	end	
+	local Toggle = Instance.new("TextButton",Meowl_Notifier) do
+		Toggle.Name = "Toggle"
+		Toggle.BackgroundColor3 = Color3.new(0.741,0.522,0.22)
+		Toggle.BorderColor3 = Color3.new(0,0,0)
+		Toggle.BorderSizePixel = 0
+		Toggle.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Italic)
+		Toggle.Position = UDim2.new(0.479,0,0.031,0)
+		Toggle.RichText = true
+		Toggle.Size = UDim2.new(0.055,0,0.091,0)
+		Toggle.Text = ""
+		Toggle.TextColor3 = Color3.new(0,0,0)
+		Toggle.TextScaled = true
+		Toggle.TextSize = 14
+		Toggle.TextWrapped = true
+	end
+	
+	local UICorner = Instance.new("UICorner",Toggle)
+	local UIAspectRatioConstraint_1 = Instance.new("UIAspectRatioConstraint",Toggle)
+	local meowlbro_1 = Instance.new("Frame",Toggle) do
+		meowlbro_1.Name = "meowlbro"
+		meowlbro_1.AnchorPoint = Vector2.new(0.5,0.5)
+		meowlbro_1.BackgroundColor3 = Color3.new(1,1,1)
+		meowlbro_1.BackgroundTransparency = 1
+		meowlbro_1.BorderColor3 = Color3.new(0,0,0)
+		meowlbro_1.BorderSizePixel = 0
+		meowlbro_1.Position = UDim2.new(0.503,0,0.498,0)
+		meowlbro_1.Size = UDim2.new(0.994,0,1.004,0)
+	end
+	
+	local lucke_1 = Instance.new("ImageLabel",meowlbro_1) do
+		lucke_1.Name = "lucke"
+		lucke_1.AnchorPoint = Vector2.new(0.5,0.5)
+		lucke_1.BackgroundColor3 = Color3.new(1,1,1)
+		lucke_1.BackgroundTransparency = 1
+		lucke_1.BorderColor3 = Color3.new(0,0,0)
+		lucke_1.BorderSizePixel = 0
+		lucke_1.Image = "rbxassetid://114748221761549"
+		lucke_1.Position = UDim2.new(0.5,0,0.5,0)
+		lucke_1.ScaleType = Enum.ScaleType.Crop
+		lucke_1.Size = UDim2.new(1,0,1,0)
+		lucke_1.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	end	
+	local labelorsum = Instance.new("TextLabel",Toggle) do
+		labelorsum.Name = "labelorsum"
+		labelorsum.AnchorPoint = Vector2.new(0.5,0.5)
+		labelorsum.BackgroundColor3 = Color3.new(1,1,1)
+		labelorsum.BackgroundTransparency = 1
+		labelorsum.BorderColor3 = Color3.new(0,0,0)
+		labelorsum.BorderSizePixel = 0
+		labelorsum.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Heavy,Enum.FontStyle.Italic)
+		labelorsum.Position = UDim2.new(0.5,0,0.5,0)
+		labelorsum.Size = UDim2.new(1,0,1,0)
+		labelorsum.Text = "MN"
+		labelorsum.TextColor3 = Color3.new(1,1,1)
+		labelorsum.TextScaled = true
+		labelorsum.TextSize = 14
+		labelorsum.TextTransparency = 0.1
+		labelorsum.TextWrapped = true
+	end	
+	end)()
+Meowl_Notifier.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+return Meowl_Notifier
+end
+
+CreateGui()
