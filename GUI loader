@@ -1,12 +1,10 @@
- 
+--10.05.2026 - 16:08 : 58
 
-function CreateGui()
 local Meowl_Notifier = Instance.new("ScreenGui") do
 	Meowl_Notifier.Name = "Meowl Notifier"
 	Meowl_Notifier.IgnoreGuiInset = true
 	Meowl_Notifier.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 	Meowl_Notifier.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    Meowl_Notifier.ResetOnSpawn = false
 end
 
 local Notifier = Instance.new("Frame",Meowl_Notifier) do
@@ -18,6 +16,7 @@ local Notifier = Instance.new("Frame",Meowl_Notifier) do
 	Notifier.BorderSizePixel = 0
 	Notifier.Position = UDim2.new(0.5,0,0.5,0)
 	Notifier.Size = UDim2.new(0.448,0,0.537,0)
+	Notifier.Visible = false
 end
 
 local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint",Notifier) do
@@ -669,7 +668,7 @@ local NoLogs = Instance.new("Frame",Logs_1) do
 	NoLogs.LayoutOrder = -99
 	NoLogs.Position = UDim2.new(0.045,0,0.112,0)
 	NoLogs.Size = UDim2.new(1,0,1,0)
-	NoLogs.Visible = true
+	NoLogs.Visible = false
 end
 
 local ViewportFrame_2 = Instance.new("ViewportFrame",NoLogs) do
@@ -683,19 +682,6 @@ local ViewportFrame_2 = Instance.new("ViewportFrame",NoLogs) do
 	ViewportFrame_2.Position = UDim2.new(0.5,0,0.5,0)
 	ViewportFrame_2.Size = UDim2.new(1,0,1,0)
 end
-
-task.spawn(function()
-   task.wait(2)
-local Animals = require(game:GetService("ReplicatedStorage").Shared.Animals)
-Animals:AttachOnViewportWithOptimizations(
-	"Meowl",
-	ViewportFrame_2,
-	true,
-	nil,
-	true
-)
-end)
-
 
 local LocalScript = Instance.new("LocalScript",ViewportFrame_2)
 local text = Instance.new("TextLabel",NoLogs) do
@@ -890,6 +876,7 @@ local Duel_1 = Instance.new("Frame",Config_1) do
 	Duel_1.BackgroundTransparency = 0.5
 	Duel_1.BorderColor3 = Color3.new(0,0,0)
 	Duel_1.BorderSizePixel = 0
+	Duel_1.LayoutOrder = -4
 	Duel_1.Position = UDim2.new(0.021,0,0,0)
 	Duel_1.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -934,7 +921,7 @@ end
 local Button = Instance.new("ImageButton",Buttons) do
 	Button.Name = "Button"
 	Button.AnchorPoint = Vector2.new(0.5,0.5)
-	Button.BackgroundColor3 = Color3.fromRGB(125, 5, 5)
+	Button.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
 	Button.BorderColor3 = Color3.new(0,0,0)
 	Button.BorderSizePixel = 0
 	Button.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
@@ -963,13 +950,27 @@ end
 local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint",Text) do
 	UITextSizeConstraint_2.MaxTextSize = 67
 end
-
+local UIStroke_20 = Instance.new("UIStroke",Text) do
+	UIStroke_20:SetAttribute("OriginalThickness",1.5)
+	UIStroke_20:AddTag("ScreenStroke")
+	UIStroke_20:AddTag("UIStroke")
+	UIStroke_20.Color = Color3.new(0.008,0.22,0)
+	UIStroke_20.Thickness = 1.413
+end
+local UIStroke_21 = Instance.new("UIStroke",Button) do
+	UIStroke_21:SetAttribute("OriginalThickness",1.5)
+	UIStroke_21:AddTag("ScreenStroke")
+	UIStroke_21:AddTag("UIStroke")
+	UIStroke_21.Color = Color3.new(0,0.255,0.027)
+	UIStroke_21.Thickness = 1.413
+end
 local Sound = Instance.new("Frame",Config_1) do
 	Sound.Name = "Sound"
 	Sound.BackgroundColor3 = Color3.new(0,0,0)
 	Sound.BackgroundTransparency = 0.5
 	Sound.BorderColor3 = Color3.new(0,0,0)
 	Sound.BorderSizePixel = 0
+	Sound.LayoutOrder = -3
 	Sound.Position = UDim2.new(0.021,0,0,0)
 	Sound.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1034,6 +1035,7 @@ local MinGeneration = Instance.new("Frame",Config_1) do
 	MinGeneration.BackgroundTransparency = 0.5
 	MinGeneration.BorderColor3 = Color3.new(0,0,0)
 	MinGeneration.BorderSizePixel = 0
+	MinGeneration.LayoutOrder = -2
 	MinGeneration.Position = UDim2.new(0.021,0,0,0)
 	MinGeneration.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1098,6 +1100,7 @@ local MaxGeneration = Instance.new("Frame",Config_1) do
 	MaxGeneration.BackgroundTransparency = 0.5
 	MaxGeneration.BorderColor3 = Color3.new(0,0,0)
 	MaxGeneration.BorderSizePixel = 0
+	MaxGeneration.LayoutOrder = -1
 	MaxGeneration.Position = UDim2.new(0.021,0,0,0)
 	MaxGeneration.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1164,7 +1167,7 @@ local General = Instance.new("TextLabel",Config_1) do
 	General.BorderColor3 = Color3.new(0,0,0)
 	General.BorderSizePixel = 0
 	General.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
-	General.LayoutOrder = -1
+	General.LayoutOrder = -5
 	General.Position = UDim2.new(0.584,0,0.062,0)
 	General.Size = UDim2.new(0.943,0,0.078,0)
 	General.Text = "General"
@@ -1189,8 +1192,8 @@ local Other = Instance.new("TextLabel",Config_1) do
 	Other.BorderColor3 = Color3.new(0,0,0)
 	Other.BorderSizePixel = 0
 	Other.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
-	Other.LayoutOrder = 1
-	Other.Position = UDim2.new(0.584,0,0.062,0)
+	Other.LayoutOrder = 4
+	Other.Position = UDim2.new(0.5,0,0.211,0)
 	Other.Size = UDim2.new(0.943,0,0.078,0)
 	Other.Text = "Other"
 	Other.TextColor3 = Color3.new(1,1,1)
@@ -1212,7 +1215,7 @@ local AllowedBrainrots = Instance.new("Frame",Config_1) do
 	AllowedBrainrots.BackgroundTransparency = 0.5
 	AllowedBrainrots.BorderColor3 = Color3.new(0,0,0)
 	AllowedBrainrots.BorderSizePixel = 0
-	AllowedBrainrots.LayoutOrder = 2
+	AllowedBrainrots.LayoutOrder = 4
 	AllowedBrainrots.Position = UDim2.new(0.021,0,0,0)
 	AllowedBrainrots.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1306,7 +1309,7 @@ local BlacklistedBrainrots = Instance.new("Frame",Config_1) do
 	BlacklistedBrainrots.BackgroundTransparency = 0.5
 	BlacklistedBrainrots.BorderColor3 = Color3.new(0,0,0)
 	BlacklistedBrainrots.BorderSizePixel = 0
-	BlacklistedBrainrots.LayoutOrder = 2
+	BlacklistedBrainrots.LayoutOrder = 5
 	BlacklistedBrainrots.Position = UDim2.new(0.021,0,0,0)
 	BlacklistedBrainrots.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1402,7 +1405,7 @@ local Other_1 = Instance.new("TextLabel",Config_1) do
 	Other_1.BorderColor3 = Color3.new(0,0,0)
 	Other_1.BorderSizePixel = 0
 	Other_1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
-	Other_1.LayoutOrder = 3
+	Other_1.LayoutOrder = 6
 	Other_1.Position = UDim2.new(0.584,0,0.062,0)
 	Other_1.Size = UDim2.new(0.943,0,0.078,0)
 	Other_1.Text = "Retry Attempts"
@@ -1425,7 +1428,7 @@ local Retry100M = Instance.new("Frame",Config_1) do
 	Retry100M.BackgroundTransparency = 0.5
 	Retry100M.BorderColor3 = Color3.new(0,0,0)
 	Retry100M.BorderSizePixel = 0
-	Retry100M.LayoutOrder = 4
+	Retry100M.LayoutOrder = 7
 	Retry100M.Position = UDim2.new(0.021,0,0,0)
 	Retry100M.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1490,7 +1493,7 @@ local Retry50M = Instance.new("Frame",Config_1) do
 	Retry50M.BackgroundTransparency = 0.5
 	Retry50M.BorderColor3 = Color3.new(0,0,0)
 	Retry50M.BorderSizePixel = 0
-	Retry50M.LayoutOrder = 4
+	Retry50M.LayoutOrder = 8
 	Retry50M.Position = UDim2.new(0.021,0,0,0)
 	Retry50M.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1555,7 +1558,7 @@ local Retry10M = Instance.new("Frame",Config_1) do
 	Retry10M.BackgroundTransparency = 0.5
 	Retry10M.BorderColor3 = Color3.new(0,0,0)
 	Retry10M.BorderSizePixel = 0
-	Retry10M.LayoutOrder = 4
+	Retry10M.LayoutOrder = 9
 	Retry10M.Position = UDim2.new(0.021,0,0,0)
 	Retry10M.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1620,7 +1623,7 @@ local Retry5M = Instance.new("Frame",Config_1) do
 	Retry5M.BackgroundTransparency = 0.5
 	Retry5M.BorderColor3 = Color3.new(0,0,0)
 	Retry5M.BorderSizePixel = 0
-	Retry5M.LayoutOrder = 4
+	Retry5M.LayoutOrder = 10
 	Retry5M.Position = UDim2.new(0.021,0,0,0)
 	Retry5M.Size = UDim2.new(0.916,0,0.181,0)
 end
@@ -1679,156 +1682,91 @@ local Text_9 = Instance.new("TextBox",Buttons_9) do
 	Text_9.TextSize = 14
 	Text_9.TextWrapped = true
 end
-local BrainrotList = Instance.new("Frame",Content) do
-	BrainrotList:SetAttribute("Type","Allowed")
-	BrainrotList.Name = "BrainrotList"
-	BrainrotList.BackgroundColor3 = Color3.new(0,0,0)
-	BrainrotList.BackgroundTransparency = 0.5
-	BrainrotList.BorderColor3 = Color3.new(0,0,0)
-	BrainrotList.BorderSizePixel = 0
-	BrainrotList.Position = UDim2.new(1.006,0,0.103,0)
-	BrainrotList.Size = UDim2.new(0.362,0,0.902,0)
-	BrainrotList.Visible = false
+local Websocket = Instance.new("TextLabel",Config_1) do
+	Websocket.Name = "Websocket"
+	Websocket.AnchorPoint = Vector2.new(0.5,0.5)
+	Websocket.BackgroundColor3 = Color3.new(1,1,1)
+	Websocket.BackgroundTransparency = 1
+	Websocket.BorderColor3 = Color3.new(0,0,0)
+	Websocket.BorderSizePixel = 0
+	Websocket.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Websocket.Position = UDim2.new(0.584,0,0.062,0)
+	Websocket.Size = UDim2.new(0.943,0,0.078,0)
+	Websocket.Text = "Websocket"
+	Websocket.TextColor3 = Color3.new(1,1,1)
+	Websocket.TextScaled = true
+	Websocket.TextSize = 14
+	Websocket.TextWrapped = true
+	Websocket.TextXAlignment = Enum.TextXAlignment.Left
 end
 
-local BrainrotList_1 = Instance.new("ScrollingFrame",BrainrotList) do
-	BrainrotList_1.Name = "BrainrotList"
-	BrainrotList_1.AnchorPoint = Vector2.new(0.5,0.5)
-	BrainrotList_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
-	BrainrotList_1.BackgroundColor3 = Color3.new(1,1,1)
-	BrainrotList_1.BackgroundTransparency = 1
-	BrainrotList_1.BorderColor3 = Color3.new(0,0,0)
-	BrainrotList_1.BorderSizePixel = 0
-	BrainrotList_1.CanvasSize = UDim2.new(0,0,1,0)
-	BrainrotList_1.Position = UDim2.new(0.499,0,0.497,0)
-	BrainrotList_1.ScrollBarImageColor3 = Color3.new(0,0,0)
-	BrainrotList_1.ScrollBarThickness = 0
-	BrainrotList_1.ScrollingDirection = Enum.ScrollingDirection.Y
-	BrainrotList_1.Size = UDim2.new(1.003,0,0.994,0)
+local UIStroke_38 = Instance.new("UIStroke",Websocket) do
+	UIStroke_38:SetAttribute("OriginalThickness",2)
+	UIStroke_38:AddTag("ScreenStroke")
+	UIStroke_38:AddTag("UIStroke")
+	UIStroke_38.Thickness = 1.476
+end
+local OhioWebsocket = Instance.new("Frame",Config_1) do
+	OhioWebsocket.Name = "OhioWebsocket"
+	OhioWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+	OhioWebsocket.BackgroundTransparency = 0.5
+	OhioWebsocket.BorderColor3 = Color3.new(0,0,0)
+	OhioWebsocket.BorderSizePixel = 0
+	OhioWebsocket.LayoutOrder = 2
+	OhioWebsocket.Position = UDim2.new(0.021,0,0,0)
+	OhioWebsocket.Size = UDim2.new(0.916,0,0.181,0)
 end
 
-local UIListLayout_4 = Instance.new("UIListLayout",BrainrotList_1) do
-	UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	UIListLayout_4.Padding = UDim.new(0.023,0)
-	UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-end
-local Padding_3 = Instance.new("Frame",BrainrotList_1) do
-	Padding_3.Name = "Padding"
-	Padding_3.AnchorPoint = Vector2.new(0.5,0.5)
-	Padding_3.BackgroundColor3 = Color3.new(1,1,1)
-	Padding_3.BackgroundTransparency = 1
-	Padding_3.BorderColor3 = Color3.new(0,0,0)
-	Padding_3.BorderSizePixel = 0
-	Padding_3.LayoutOrder = -99
-	Padding_3.Position = UDim2.new(0.045,0,0.112,0)
-	Padding_3.Size = UDim2.new(1,0,0,0)
-end
-local Template_2 = Instance.new("ImageButton",BrainrotList_1) do
-	Template_2.Name = "Template"
-	Template_2.AnchorPoint = Vector2.new(0.5,0.5)
-	Template_2.BackgroundColor3 = Color3.new(0,0,0)
-	Template_2.BackgroundTransparency = 0.4
-	Template_2.BorderColor3 = Color3.new(0,0,0)
-	Template_2.BorderSizePixel = 0
-	Template_2.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
-	Template_2.ImageTransparency = 1
-	Template_2.Position = UDim2.new(0.5,0,0.098,0)
-	Template_2.Size = UDim2.new(0.915,0,0.151,0)
-	Template_2.Visible = false
+local Function_10 = Instance.new("TextLabel",OhioWebsocket) do
+	Function_10.Name = "Function"
+	Function_10.BackgroundColor3 = Color3.new(1,1,1)
+	Function_10.BackgroundTransparency = 1
+	Function_10.BorderColor3 = Color3.new(0,0,0)
+	Function_10.BorderSizePixel = 0
+	Function_10.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_10.Position = UDim2.new(0.024,0,0.088,0)
+	Function_10.Size = UDim2.new(0.646,0,0.81,0)
+	Function_10.Text = "Ohio"
+	Function_10.TextColor3 = Color3.new(1,1,1)
+	Function_10.TextScaled = true
+	Function_10.TextSize = 14
+	Function_10.TextWrapped = true
+	Function_10.TextXAlignment = Enum.TextXAlignment.Left
 end
 
-local UIStroke_38 = Instance.new("UIStroke",Template_2)
-local BrainrotBg_1 = Instance.new("ImageLabel",Template_2) do
-	BrainrotBg_1.Name = "BrainrotBg"
-	BrainrotBg_1.AnchorPoint = Vector2.new(0,0.5)
-	BrainrotBg_1.BackgroundColor3 = Color3.new(0,0,0)
-	BrainrotBg_1.BackgroundTransparency = 0.5
-	BrainrotBg_1.BorderColor3 = Color3.new(0,0,0)
-	BrainrotBg_1.BorderSizePixel = 0
-	BrainrotBg_1.LayoutOrder = 2
-	BrainrotBg_1.Position = UDim2.new(0.02,0,0.483,0)
-	BrainrotBg_1.ScaleType = Enum.ScaleType.Fit
-	BrainrotBg_1.Size = UDim2.new(0.321,0,0.715,0)
-	BrainrotBg_1.ZIndex = 2
+local UITextSizeConstraint_14 = Instance.new("UITextSizeConstraint",Function_10) do
+	UITextSizeConstraint_14.MaxTextSize = 53
+end
+local UIStroke_39 = Instance.new("UIStroke",Function_10) do
+	UIStroke_39:SetAttribute("OriginalThickness",1)
+	UIStroke_39:AddTag("ScreenStroke")
+	UIStroke_39:AddTag("UIStroke")
+	UIStroke_39.Thickness = 0.942
+end
+local Buttons_10 = Instance.new("Frame",OhioWebsocket) do
+	Buttons_10.Name = "Buttons"
+	Buttons_10.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_10.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_10.BackgroundTransparency = 1
+	Buttons_10.BorderColor3 = Color3.new(0,0,0)
+	Buttons_10.BorderSizePixel = 0
+	Buttons_10.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_10.Size = UDim2.new(0.284,0,0.746,0)
 end
 
-local UIStroke_39 = Instance.new("UIStroke",BrainrotBg_1) do
-	UIStroke_39.Color = Color3.new(1,1,1)
-end
-local ViewportFrame_3 = Instance.new("ViewportFrame",BrainrotBg_1) do
-	ViewportFrame_3.Ambient = Color3.new(1,1,1)
-	ViewportFrame_3.AnchorPoint = Vector2.new(0.5,0.5)
-	ViewportFrame_3.BackgroundColor3 = Color3.new(0,0,0)
-	ViewportFrame_3.BackgroundTransparency = 1
-	ViewportFrame_3.BorderColor3 = Color3.new(0,0,0)
-	ViewportFrame_3.BorderSizePixel = 0
-	ViewportFrame_3.LightColor = Color3.new(1,1,1)
-	ViewportFrame_3.Position = UDim2.new(0.5,0,0.5,0)
-	ViewportFrame_3.Size = UDim2.new(1,0,1,0)
-end
-local NameLabel_2 = Instance.new("TextLabel",Template_2) do
-	NameLabel_2.Name = "NameLabel"
-	NameLabel_2.AnchorPoint = Vector2.new(0.5,0.5)
-	NameLabel_2.BackgroundColor3 = Color3.new(1,1,1)
-	NameLabel_2.BackgroundTransparency = 1
-	NameLabel_2.BorderColor3 = Color3.new(0,0,0)
-	NameLabel_2.BorderSizePixel = 0
-	NameLabel_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
-	NameLabel_2.LayoutOrder = 1
-	NameLabel_2.Position = UDim2.new(0.709,0,0.493,0)
-	NameLabel_2.Size = UDim2.new(0.567,0,0.249,0)
-	NameLabel_2.Text = "{DisplayName}"
-	NameLabel_2.TextColor3 = Color3.new(1,1,1)
-	NameLabel_2.TextScaled = true
-	NameLabel_2.TextSize = 14
-	NameLabel_2.TextWrapped = true
-	NameLabel_2.TextXAlignment = Enum.TextXAlignment.Left
+local Button_3 = Instance.new("ImageButton",Buttons_10) do
+	Button_3.Name = "Button"
+	Button_3.AnchorPoint = Vector2.new(0.5,0.5)
+	Button_3.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Button_3.BorderColor3 = Color3.new(0,0,0)
+	Button_3.BorderSizePixel = 0
+	Button_3.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Button_3.ImageTransparency = 1
+	Button_3.Position = UDim2.new(0.5,0,0.5,0)
+	Button_3.Size = UDim2.new(1,0,1,0)
 end
 
-local UIStroke_40 = Instance.new("UIStroke",NameLabel_2) do
-	UIStroke_40.Thickness = 2
-end
-local NameLabel_3 = Instance.new("TextLabel",BrainrotList) do
-	NameLabel_3.Name = "NameLabel"
-	NameLabel_3.AnchorPoint = Vector2.new(0.5,0.5)
-	NameLabel_3.BackgroundColor3 = Color3.new(1,1,1)
-	NameLabel_3.BackgroundTransparency = 1
-	NameLabel_3.BorderColor3 = Color3.new(0,0,0)
-	NameLabel_3.BorderSizePixel = 0
-	NameLabel_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
-	NameLabel_3.LayoutOrder = 1
-	NameLabel_3.Position = UDim2.new(0.502,0,-0.122,0)
-	NameLabel_3.Size = UDim2.new(0.567,0,0.249,0)
-	NameLabel_3.Text = "Select Brainrots"
-	NameLabel_3.TextColor3 = Color3.new(1,1,1)
-	NameLabel_3.TextScaled = true
-	NameLabel_3.TextSize = 14
-	NameLabel_3.TextWrapped = true
-	NameLabel_3.TextXAlignment = Enum.TextXAlignment.Left
-end
-
-local UIStroke_41 = Instance.new("UIStroke",NameLabel_3) do
-	UIStroke_41.Thickness = 2
-end
-local Confirm = Instance.new("ImageButton",BrainrotList) do
-	Confirm.Name = "Confirm"
-	Confirm.AnchorPoint = Vector2.new(0.5,0.5)
-	Confirm.BackgroundColor3 = Color3.new(0.192,0.639,0)
-	Confirm.BorderColor3 = Color3.new(0,0,0)
-	Confirm.BorderSizePixel = 0
-	Confirm.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
-	Confirm.ImageTransparency = 1
-	Confirm.Position = UDim2.new(0.254,0,1.101,0)
-	Confirm.Size = UDim2.new(0.394,0,0.136,0)
-end
-
-local UIStroke_42 = Instance.new("UIStroke")
-UIStroke_42.Parent = Confirm
-
-UIStroke_42.Color = Color3.new(0, 0.255, 0.027)
-UIStroke_42.Thickness = 1.413
-
-local Text_10 = Instance.new("TextLabel",Confirm) do
+local Text_10 = Instance.new("TextLabel",Button_3) do
 	Text_10.Name = "Text"
 	Text_10.AnchorPoint = Vector2.new(0.5,0.5)
 	Text_10.BackgroundColor3 = Color3.new(1,1,1)
@@ -1838,24 +1776,1016 @@ local Text_10 = Instance.new("TextLabel",Confirm) do
 	Text_10.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
 	Text_10.Position = UDim2.new(0.5,0,0.5,0)
 	Text_10.Size = UDim2.new(1,0,0.9,0)
-	Text_10.Text = "Confirm"
+	Text_10.Text = "Connect"
 	Text_10.TextColor3 = Color3.new(1,1,1)
 	Text_10.TextScaled = true
 	Text_10.TextSize = 14
 	Text_10.TextWrapped = true
 end
 
-local UITextSizeConstraint_14 = Instance.new("UITextSizeConstraint",Text_10) do
-	UITextSizeConstraint_14.MaxTextSize = 67
+local UITextSizeConstraint_15 = Instance.new("UITextSizeConstraint",Text_10) do
+	UITextSizeConstraint_15.MaxTextSize = 67
 end
-local UIStroke_43 = Instance.new("UIStroke",Text_10) do
-	UIStroke_43:SetAttribute("OriginalThickness",1.5)
-	UIStroke_43:AddTag("ScreenStroke")
-	UIStroke_43:AddTag("UIStroke")
-	UIStroke_43.Color = Color3.new(0.008,0.22,0)
-	UIStroke_43.Thickness = 1.413
+local UIStroke_40 = Instance.new("UIStroke",Text_10) do
+	UIStroke_40:SetAttribute("OriginalThickness",1.5)
+	UIStroke_40:AddTag("ScreenStroke")
+	UIStroke_40:AddTag("UIStroke")
+	UIStroke_40.Color = Color3.new(0.008,0.22,0)
+	UIStroke_40.Thickness = 1.413
 end
+local UIStroke_41 = Instance.new("UIStroke",Button_3) do
+	UIStroke_41:SetAttribute("OriginalThickness",1.5)
+	UIStroke_41:AddTag("ScreenStroke")
+	UIStroke_41:AddTag("UIStroke")
+	UIStroke_41.Color = Color3.new(0,0.255,0.027)
+	UIStroke_41.Thickness = 1.413
+end
+local VirginiaWebsocket = Instance.new("Frame",Config_1) do
+	VirginiaWebsocket.Name = "VirginiaWebsocket"
+	VirginiaWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+	VirginiaWebsocket.BackgroundTransparency = 0.5
+	VirginiaWebsocket.BorderColor3 = Color3.new(0,0,0)
+	VirginiaWebsocket.BorderSizePixel = 0
+	VirginiaWebsocket.LayoutOrder = 2
+	VirginiaWebsocket.Position = UDim2.new(0.021,0,0,0)
+	VirginiaWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+end
+
+local Function_11 = Instance.new("TextLabel",VirginiaWebsocket) do
+	Function_11.Name = "Function"
+	Function_11.BackgroundColor3 = Color3.new(1,1,1)
+	Function_11.BackgroundTransparency = 1
+	Function_11.BorderColor3 = Color3.new(0,0,0)
+	Function_11.BorderSizePixel = 0
+	Function_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+	Function_11.Position = UDim2.new(0.024,0,0.088,0)
+	Function_11.Size = UDim2.new(0.646,0,0.81,0)
+	Function_11.Text = "Virginia"
+	Function_11.TextColor3 = Color3.new(1,1,1)
+	Function_11.TextScaled = true
+	Function_11.TextSize = 14
+	Function_11.TextWrapped = true
+	Function_11.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+local UITextSizeConstraint_16 = Instance.new("UITextSizeConstraint",Function_11) do
+	UITextSizeConstraint_16.MaxTextSize = 53
+end
+local UIStroke_42 = Instance.new("UIStroke",Function_11) do
+	UIStroke_42:SetAttribute("OriginalThickness",1)
+	UIStroke_42:AddTag("ScreenStroke")
+	UIStroke_42:AddTag("UIStroke")
+	UIStroke_42.Thickness = 0.942
+end
+local Buttons_11 = Instance.new("Frame",VirginiaWebsocket) do
+	Buttons_11.Name = "Buttons"
+	Buttons_11.AnchorPoint = Vector2.new(0.5,0.5)
+	Buttons_11.BackgroundColor3 = Color3.new(1,1,1)
+	Buttons_11.BackgroundTransparency = 1
+	Buttons_11.BorderColor3 = Color3.new(0,0,0)
+	Buttons_11.BorderSizePixel = 0
+	Buttons_11.Position = UDim2.new(0.827,0,0.483,0)
+	Buttons_11.Size = UDim2.new(0.284,0,0.746,0)
+end
+
+local Button_4 = Instance.new("ImageButton",Buttons_11) do
+	Button_4.Name = "Button"
+	Button_4.AnchorPoint = Vector2.new(0.5,0.5)
+	Button_4.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+	Button_4.BorderColor3 = Color3.new(0,0,0)
+	Button_4.BorderSizePixel = 0
+	Button_4.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	Button_4.ImageTransparency = 1
+	Button_4.Position = UDim2.new(0.5,0,0.5,0)
+	Button_4.Size = UDim2.new(1,0,1,0)
+end
+
 ;(function():()
+	local Text_11 = Instance.new("TextLabel",Button_4) do
+		Text_11.Name = "Text"
+		Text_11.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_11.BackgroundColor3 = Color3.new(1,1,1)
+		Text_11.BackgroundTransparency = 1
+		Text_11.BorderColor3 = Color3.new(0,0,0)
+		Text_11.BorderSizePixel = 0
+		Text_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_11.Position = UDim2.new(0.5,0,0.5,0)
+		Text_11.Size = UDim2.new(1,0,0.9,0)
+		Text_11.Text = "Connect"
+		Text_11.TextColor3 = Color3.new(1,1,1)
+		Text_11.TextScaled = true
+		Text_11.TextSize = 14
+		Text_11.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_17 = Instance.new("UITextSizeConstraint",Text_11) do
+		UITextSizeConstraint_17.MaxTextSize = 67
+	end
+	local UIStroke_43 = Instance.new("UIStroke",Text_11) do
+		UIStroke_43:SetAttribute("OriginalThickness",1.5)
+		UIStroke_43:AddTag("ScreenStroke")
+		UIStroke_43:AddTag("UIStroke")
+		UIStroke_43.Color = Color3.new(0.008,0.22,0)
+		UIStroke_43.Thickness = 1.413
+	end	
+	local UIStroke_44 = Instance.new("UIStroke",Button_4) do
+		UIStroke_44:SetAttribute("OriginalThickness",1.5)
+		UIStroke_44:AddTag("ScreenStroke")
+		UIStroke_44:AddTag("UIStroke")
+		UIStroke_44.Color = Color3.new(0,0.255,0.027)
+		UIStroke_44.Thickness = 1.413
+	end
+	local CaliforniaWebsocket = Instance.new("Frame",Config_1) do
+		CaliforniaWebsocket.Name = "CaliforniaWebsocket"
+		CaliforniaWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+		CaliforniaWebsocket.BackgroundTransparency = 0.5
+		CaliforniaWebsocket.BorderColor3 = Color3.new(0,0,0)
+		CaliforniaWebsocket.BorderSizePixel = 0
+		CaliforniaWebsocket.LayoutOrder = 3
+		CaliforniaWebsocket.Position = UDim2.new(0.021,0,0,0)
+		CaliforniaWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+	end
+	
+	local Function_12 = Instance.new("TextLabel",CaliforniaWebsocket) do
+		Function_12.Name = "Function"
+		Function_12.BackgroundColor3 = Color3.new(1,1,1)
+		Function_12.BackgroundTransparency = 1
+		Function_12.BorderColor3 = Color3.new(0,0,0)
+		Function_12.BorderSizePixel = 0
+		Function_12.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Function_12.Position = UDim2.new(0.024,0,0.088,0)
+		Function_12.Size = UDim2.new(0.646,0,0.81,0)
+		Function_12.Text = "California"
+		Function_12.TextColor3 = Color3.new(1,1,1)
+		Function_12.TextScaled = true
+		Function_12.TextSize = 14
+		Function_12.TextWrapped = true
+		Function_12.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_18 = Instance.new("UITextSizeConstraint",Function_12) do
+		UITextSizeConstraint_18.MaxTextSize = 53
+	end
+	local UIStroke_45 = Instance.new("UIStroke",Function_12) do
+		UIStroke_45:SetAttribute("OriginalThickness",1)
+		UIStroke_45:AddTag("ScreenStroke")
+		UIStroke_45:AddTag("UIStroke")
+		UIStroke_45.Thickness = 0.942
+	end	
+	local Buttons_12 = Instance.new("Frame",CaliforniaWebsocket) do
+		Buttons_12.Name = "Buttons"
+		Buttons_12.AnchorPoint = Vector2.new(0.5,0.5)
+		Buttons_12.BackgroundColor3 = Color3.new(1,1,1)
+		Buttons_12.BackgroundTransparency = 1
+		Buttons_12.BorderColor3 = Color3.new(0,0,0)
+		Buttons_12.BorderSizePixel = 0
+		Buttons_12.Position = UDim2.new(0.827,0,0.483,0)
+		Buttons_12.Size = UDim2.new(0.284,0,0.746,0)
+	end
+	
+	local Button_5 = Instance.new("ImageButton",Buttons_12) do
+		Button_5.Name = "Button"
+		Button_5.AnchorPoint = Vector2.new(0.5,0.5)
+		Button_5.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+		Button_5.BorderColor3 = Color3.new(0,0,0)
+		Button_5.BorderSizePixel = 0
+		Button_5.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Button_5.ImageTransparency = 1
+		Button_5.Position = UDim2.new(0.5,0,0.5,0)
+		Button_5.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Text_12 = Instance.new("TextLabel",Button_5) do
+		Text_12.Name = "Text"
+		Text_12.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_12.BackgroundColor3 = Color3.new(1,1,1)
+		Text_12.BackgroundTransparency = 1
+		Text_12.BorderColor3 = Color3.new(0,0,0)
+		Text_12.BorderSizePixel = 0
+		Text_12.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_12.Position = UDim2.new(0.5,0,0.5,0)
+		Text_12.Size = UDim2.new(1,0,0.9,0)
+		Text_12.Text = "Connect"
+		Text_12.TextColor3 = Color3.new(1,1,1)
+		Text_12.TextScaled = true
+		Text_12.TextSize = 14
+		Text_12.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_19 = Instance.new("UITextSizeConstraint",Text_12) do
+		UITextSizeConstraint_19.MaxTextSize = 67
+	end
+	local UIStroke_46 = Instance.new("UIStroke",Text_12) do
+		UIStroke_46:SetAttribute("OriginalThickness",1.5)
+		UIStroke_46:AddTag("ScreenStroke")
+		UIStroke_46:AddTag("UIStroke")
+		UIStroke_46.Color = Color3.new(0.008,0.22,0)
+		UIStroke_46.Thickness = 1.413
+	end	
+	local UIStroke_47 = Instance.new("UIStroke",Button_5) do
+		UIStroke_47:SetAttribute("OriginalThickness",1.5)
+		UIStroke_47:AddTag("ScreenStroke")
+		UIStroke_47:AddTag("UIStroke")
+		UIStroke_47.Color = Color3.new(0,0.255,0.027)
+		UIStroke_47.Thickness = 1.413
+	end			
+	local CountryUSA = Instance.new("TextLabel",Config_1) do
+		CountryUSA.Name = "CountryUSA"
+		CountryUSA.AnchorPoint = Vector2.new(0.5,0.5)
+		CountryUSA.BackgroundColor3 = Color3.new(1,1,1)
+		CountryUSA.BackgroundTransparency = 1
+		CountryUSA.BorderColor3 = Color3.new(0,0,0)
+		CountryUSA.BorderSizePixel = 0
+		CountryUSA.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		CountryUSA.LayoutOrder = 1
+		CountryUSA.Position = UDim2.new(0.484,0,0.191,0)
+		CountryUSA.Size = UDim2.new(0.892,0,0.051,0)
+		CountryUSA.Text = "United States"
+		CountryUSA.TextColor3 = Color3.new(1,1,1)
+		CountryUSA.TextScaled = true
+		CountryUSA.TextSize = 14
+		CountryUSA.TextWrapped = true
+		CountryUSA.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_48 = Instance.new("UIStroke",CountryUSA) do
+		UIStroke_48:SetAttribute("OriginalThickness",2)
+		UIStroke_48:AddTag("ScreenStroke")
+		UIStroke_48:AddTag("UIStroke")
+		UIStroke_48.Thickness = 1.476
+	end	
+	local ContinentEurope = Instance.new("TextLabel",Config_1) do
+		ContinentEurope.Name = "ContinentEurope"
+		ContinentEurope.AnchorPoint = Vector2.new(0.5,0.5)
+		ContinentEurope.BackgroundColor3 = Color3.new(1,1,1)
+		ContinentEurope.BackgroundTransparency = 1
+		ContinentEurope.BorderColor3 = Color3.new(0,0,0)
+		ContinentEurope.BorderSizePixel = 0
+		ContinentEurope.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		ContinentEurope.LayoutOrder = 3
+		ContinentEurope.Position = UDim2.new(0.484,0,0.191,0)
+		ContinentEurope.Size = UDim2.new(0.892,0,0.051,0)
+		ContinentEurope.Text = "Europe"
+		ContinentEurope.TextColor3 = Color3.new(1,1,1)
+		ContinentEurope.TextScaled = true
+		ContinentEurope.TextSize = 14
+		ContinentEurope.TextWrapped = true
+		ContinentEurope.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_49 = Instance.new("UIStroke",ContinentEurope) do
+		UIStroke_49:SetAttribute("OriginalThickness",2)
+		UIStroke_49:AddTag("ScreenStroke")
+		UIStroke_49:AddTag("UIStroke")
+		UIStroke_49.Thickness = 1.476
+	end	
+	local GermanyWebsocket = Instance.new("Frame",Config_1) do
+		GermanyWebsocket.Name = "GermanyWebsocket"
+		GermanyWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+		GermanyWebsocket.BackgroundTransparency = 0.5
+		GermanyWebsocket.BorderColor3 = Color3.new(0,0,0)
+		GermanyWebsocket.BorderSizePixel = 0
+		GermanyWebsocket.LayoutOrder = 3
+		GermanyWebsocket.Position = UDim2.new(0.021,0,0,0)
+		GermanyWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+	end
+	
+	local Function_13 = Instance.new("TextLabel",GermanyWebsocket) do
+		Function_13.Name = "Function"
+		Function_13.BackgroundColor3 = Color3.new(1,1,1)
+		Function_13.BackgroundTransparency = 1
+		Function_13.BorderColor3 = Color3.new(0,0,0)
+		Function_13.BorderSizePixel = 0
+		Function_13.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Function_13.Position = UDim2.new(0.024,0,0.088,0)
+		Function_13.Size = UDim2.new(0.646,0,0.81,0)
+		Function_13.Text = "Germany"
+		Function_13.TextColor3 = Color3.new(1,1,1)
+		Function_13.TextScaled = true
+		Function_13.TextSize = 14
+		Function_13.TextWrapped = true
+		Function_13.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_20 = Instance.new("UITextSizeConstraint",Function_13) do
+		UITextSizeConstraint_20.MaxTextSize = 53
+	end
+	local UIStroke_50 = Instance.new("UIStroke",Function_13) do
+		UIStroke_50:SetAttribute("OriginalThickness",1)
+		UIStroke_50:AddTag("ScreenStroke")
+		UIStroke_50:AddTag("UIStroke")
+		UIStroke_50.Thickness = 0.942
+	end	
+	local Buttons_13 = Instance.new("Frame",GermanyWebsocket) do
+		Buttons_13.Name = "Buttons"
+		Buttons_13.AnchorPoint = Vector2.new(0.5,0.5)
+		Buttons_13.BackgroundColor3 = Color3.new(1,1,1)
+		Buttons_13.BackgroundTransparency = 1
+		Buttons_13.BorderColor3 = Color3.new(0,0,0)
+		Buttons_13.BorderSizePixel = 0
+		Buttons_13.Position = UDim2.new(0.827,0,0.483,0)
+		Buttons_13.Size = UDim2.new(0.284,0,0.746,0)
+	end
+	
+	local Button_6 = Instance.new("ImageButton",Buttons_13) do
+		Button_6.Name = "Button"
+		Button_6.AnchorPoint = Vector2.new(0.5,0.5)
+		Button_6.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+		Button_6.BorderColor3 = Color3.new(0,0,0)
+		Button_6.BorderSizePixel = 0
+		Button_6.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Button_6.ImageTransparency = 1
+		Button_6.Position = UDim2.new(0.5,0,0.5,0)
+		Button_6.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Text_13 = Instance.new("TextLabel",Button_6) do
+		Text_13.Name = "Text"
+		Text_13.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_13.BackgroundColor3 = Color3.new(1,1,1)
+		Text_13.BackgroundTransparency = 1
+		Text_13.BorderColor3 = Color3.new(0,0,0)
+		Text_13.BorderSizePixel = 0
+		Text_13.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_13.Position = UDim2.new(0.5,0,0.5,0)
+		Text_13.Size = UDim2.new(1,0,0.9,0)
+		Text_13.Text = "Connect"
+		Text_13.TextColor3 = Color3.new(1,1,1)
+		Text_13.TextScaled = true
+		Text_13.TextSize = 14
+		Text_13.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_21 = Instance.new("UITextSizeConstraint",Text_13) do
+		UITextSizeConstraint_21.MaxTextSize = 67
+	end
+	local UIStroke_51 = Instance.new("UIStroke",Text_13) do
+		UIStroke_51:SetAttribute("OriginalThickness",1.5)
+		UIStroke_51:AddTag("ScreenStroke")
+		UIStroke_51:AddTag("UIStroke")
+		UIStroke_51.Color = Color3.new(0.008,0.22,0)
+		UIStroke_51.Thickness = 1.413
+	end	
+	local UIStroke_52 = Instance.new("UIStroke",Button_6) do
+		UIStroke_52:SetAttribute("OriginalThickness",1.5)
+		UIStroke_52:AddTag("ScreenStroke")
+		UIStroke_52:AddTag("UIStroke")
+		UIStroke_52.Color = Color3.new(0,0.255,0.027)
+		UIStroke_52.Thickness = 1.413
+	end			
+	local UnitedKingdomWebsocket = Instance.new("Frame",Config_1) do
+		UnitedKingdomWebsocket.Name = "UnitedKingdomWebsocket"
+		UnitedKingdomWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+		UnitedKingdomWebsocket.BackgroundTransparency = 0.5
+		UnitedKingdomWebsocket.BorderColor3 = Color3.new(0,0,0)
+		UnitedKingdomWebsocket.BorderSizePixel = 0
+		UnitedKingdomWebsocket.LayoutOrder = 3
+		UnitedKingdomWebsocket.Position = UDim2.new(0.021,0,0,0)
+		UnitedKingdomWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+	end
+	
+	local Function_14 = Instance.new("TextLabel",UnitedKingdomWebsocket) do
+		Function_14.Name = "Function"
+		Function_14.BackgroundColor3 = Color3.new(1,1,1)
+		Function_14.BackgroundTransparency = 1
+		Function_14.BorderColor3 = Color3.new(0,0,0)
+		Function_14.BorderSizePixel = 0
+		Function_14.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Function_14.Position = UDim2.new(0.024,0,0.088,0)
+		Function_14.Size = UDim2.new(0.63,0,0.81,0)
+		Function_14.Text = "United Kingdom"
+		Function_14.TextColor3 = Color3.new(1,1,1)
+		Function_14.TextScaled = true
+		Function_14.TextSize = 14
+		Function_14.TextWrapped = true
+		Function_14.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_22 = Instance.new("UITextSizeConstraint",Function_14) do
+		UITextSizeConstraint_22.MaxTextSize = 53
+	end
+	local UIStroke_53 = Instance.new("UIStroke",Function_14) do
+		UIStroke_53:SetAttribute("OriginalThickness",1)
+		UIStroke_53:AddTag("ScreenStroke")
+		UIStroke_53:AddTag("UIStroke")
+		UIStroke_53.Thickness = 0.942
+	end	
+	local Buttons_14 = Instance.new("Frame",UnitedKingdomWebsocket) do
+		Buttons_14.Name = "Buttons"
+		Buttons_14.AnchorPoint = Vector2.new(0.5,0.5)
+		Buttons_14.BackgroundColor3 = Color3.new(1,1,1)
+		Buttons_14.BackgroundTransparency = 1
+		Buttons_14.BorderColor3 = Color3.new(0,0,0)
+		Buttons_14.BorderSizePixel = 0
+		Buttons_14.Position = UDim2.new(0.827,0,0.483,0)
+		Buttons_14.Size = UDim2.new(0.284,0,0.746,0)
+	end
+	
+	local Button_7 = Instance.new("ImageButton",Buttons_14) do
+		Button_7.Name = "Button"
+		Button_7.AnchorPoint = Vector2.new(0.5,0.5)
+		Button_7.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+		Button_7.BorderColor3 = Color3.new(0,0,0)
+		Button_7.BorderSizePixel = 0
+		Button_7.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Button_7.ImageTransparency = 1
+		Button_7.Position = UDim2.new(0.5,0,0.5,0)
+		Button_7.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Text_14 = Instance.new("TextLabel",Button_7) do
+		Text_14.Name = "Text"
+		Text_14.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_14.BackgroundColor3 = Color3.new(1,1,1)
+		Text_14.BackgroundTransparency = 1
+		Text_14.BorderColor3 = Color3.new(0,0,0)
+		Text_14.BorderSizePixel = 0
+		Text_14.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_14.Position = UDim2.new(0.5,0,0.5,0)
+		Text_14.Size = UDim2.new(1,0,0.9,0)
+		Text_14.Text = "Connect"
+		Text_14.TextColor3 = Color3.new(1,1,1)
+		Text_14.TextScaled = true
+		Text_14.TextSize = 14
+		Text_14.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_23 = Instance.new("UITextSizeConstraint",Text_14) do
+		UITextSizeConstraint_23.MaxTextSize = 67
+	end
+	local UIStroke_54 = Instance.new("UIStroke",Text_14) do
+		UIStroke_54:SetAttribute("OriginalThickness",1.5)
+		UIStroke_54:AddTag("ScreenStroke")
+		UIStroke_54:AddTag("UIStroke")
+		UIStroke_54.Color = Color3.new(0.008,0.22,0)
+		UIStroke_54.Thickness = 1.413
+	end	
+	local UIStroke_55 = Instance.new("UIStroke",Button_7) do
+		UIStroke_55:SetAttribute("OriginalThickness",1.5)
+		UIStroke_55:AddTag("ScreenStroke")
+		UIStroke_55:AddTag("UIStroke")
+		UIStroke_55.Color = Color3.new(0,0.255,0.027)
+		UIStroke_55.Thickness = 1.413
+	end			
+	local FranceWebsocket = Instance.new("Frame",Config_1) do
+		FranceWebsocket.Name = "FranceWebsocket"
+		FranceWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+		FranceWebsocket.BackgroundTransparency = 0.5
+		FranceWebsocket.BorderColor3 = Color3.new(0,0,0)
+		FranceWebsocket.BorderSizePixel = 0
+		FranceWebsocket.LayoutOrder = 3
+		FranceWebsocket.Position = UDim2.new(0.021,0,0,0)
+		FranceWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+	end
+	
+	local Function_15 = Instance.new("TextLabel",FranceWebsocket) do
+		Function_15.Name = "Function"
+		Function_15.BackgroundColor3 = Color3.new(1,1,1)
+		Function_15.BackgroundTransparency = 1
+		Function_15.BorderColor3 = Color3.new(0,0,0)
+		Function_15.BorderSizePixel = 0
+		Function_15.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Function_15.Position = UDim2.new(0.024,0,0.088,0)
+		Function_15.Size = UDim2.new(0.646,0,0.81,0)
+		Function_15.Text = "France"
+		Function_15.TextColor3 = Color3.new(1,1,1)
+		Function_15.TextScaled = true
+		Function_15.TextSize = 14
+		Function_15.TextWrapped = true
+		Function_15.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_24 = Instance.new("UITextSizeConstraint",Function_15) do
+		UITextSizeConstraint_24.MaxTextSize = 53
+	end
+	local UIStroke_56 = Instance.new("UIStroke",Function_15) do
+		UIStroke_56:SetAttribute("OriginalThickness",1)
+		UIStroke_56:AddTag("ScreenStroke")
+		UIStroke_56:AddTag("UIStroke")
+		UIStroke_56.Thickness = 0.942
+	end	
+	local Buttons_15 = Instance.new("Frame",FranceWebsocket) do
+		Buttons_15.Name = "Buttons"
+		Buttons_15.AnchorPoint = Vector2.new(0.5,0.5)
+		Buttons_15.BackgroundColor3 = Color3.new(1,1,1)
+		Buttons_15.BackgroundTransparency = 1
+		Buttons_15.BorderColor3 = Color3.new(0,0,0)
+		Buttons_15.BorderSizePixel = 0
+		Buttons_15.Position = UDim2.new(0.827,0,0.483,0)
+		Buttons_15.Size = UDim2.new(0.284,0,0.746,0)
+	end
+	
+	local Button_8 = Instance.new("ImageButton",Buttons_15) do
+		Button_8.Name = "Button"
+		Button_8.AnchorPoint = Vector2.new(0.5,0.5)
+		Button_8.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+		Button_8.BorderColor3 = Color3.new(0,0,0)
+		Button_8.BorderSizePixel = 0
+		Button_8.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Button_8.ImageTransparency = 1
+		Button_8.Position = UDim2.new(0.5,0,0.5,0)
+		Button_8.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Text_15 = Instance.new("TextLabel",Button_8) do
+		Text_15.Name = "Text"
+		Text_15.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_15.BackgroundColor3 = Color3.new(1,1,1)
+		Text_15.BackgroundTransparency = 1
+		Text_15.BorderColor3 = Color3.new(0,0,0)
+		Text_15.BorderSizePixel = 0
+		Text_15.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_15.Position = UDim2.new(0.5,0,0.5,0)
+		Text_15.Size = UDim2.new(1,0,0.9,0)
+		Text_15.Text = "Connect"
+		Text_15.TextColor3 = Color3.new(1,1,1)
+		Text_15.TextScaled = true
+		Text_15.TextSize = 14
+		Text_15.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_25 = Instance.new("UITextSizeConstraint",Text_15) do
+		UITextSizeConstraint_25.MaxTextSize = 67
+	end
+	local UIStroke_57 = Instance.new("UIStroke",Text_15) do
+		UIStroke_57:SetAttribute("OriginalThickness",1.5)
+		UIStroke_57:AddTag("ScreenStroke")
+		UIStroke_57:AddTag("UIStroke")
+		UIStroke_57.Color = Color3.new(0.008,0.22,0)
+		UIStroke_57.Thickness = 1.413
+	end	
+	local UIStroke_58 = Instance.new("UIStroke",Button_8) do
+		UIStroke_58:SetAttribute("OriginalThickness",1.5)
+		UIStroke_58:AddTag("ScreenStroke")
+		UIStroke_58:AddTag("UIStroke")
+		UIStroke_58.Color = Color3.new(0,0.255,0.027)
+		UIStroke_58.Thickness = 1.413
+	end			
+	local ContinentSouthAmerica = Instance.new("TextLabel",Config_1) do
+		ContinentSouthAmerica.Name = "ContinentSouthAmerica"
+		ContinentSouthAmerica.AnchorPoint = Vector2.new(0.5,0.5)
+		ContinentSouthAmerica.BackgroundColor3 = Color3.new(1,1,1)
+		ContinentSouthAmerica.BackgroundTransparency = 1
+		ContinentSouthAmerica.BorderColor3 = Color3.new(0,0,0)
+		ContinentSouthAmerica.BorderSizePixel = 0
+		ContinentSouthAmerica.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		ContinentSouthAmerica.LayoutOrder = 3
+		ContinentSouthAmerica.Position = UDim2.new(0.484,0,0.191,0)
+		ContinentSouthAmerica.Size = UDim2.new(0.892,0,0.051,0)
+		ContinentSouthAmerica.Text = "South America"
+		ContinentSouthAmerica.TextColor3 = Color3.new(1,1,1)
+		ContinentSouthAmerica.TextScaled = true
+		ContinentSouthAmerica.TextSize = 14
+		ContinentSouthAmerica.TextWrapped = true
+		ContinentSouthAmerica.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_59 = Instance.new("UIStroke",ContinentSouthAmerica) do
+		UIStroke_59:SetAttribute("OriginalThickness",2)
+		UIStroke_59:AddTag("ScreenStroke")
+		UIStroke_59:AddTag("UIStroke")
+		UIStroke_59.Thickness = 1.476
+	end	
+	local BrazilWebsocket = Instance.new("Frame",Config_1) do
+		BrazilWebsocket.Name = "BrazilWebsocket"
+		BrazilWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+		BrazilWebsocket.BackgroundTransparency = 0.5
+		BrazilWebsocket.BorderColor3 = Color3.new(0,0,0)
+		BrazilWebsocket.BorderSizePixel = 0
+		BrazilWebsocket.LayoutOrder = 3
+		BrazilWebsocket.Position = UDim2.new(0.021,0,0,0)
+		BrazilWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+	end
+	
+	local Function_16 = Instance.new("TextLabel",BrazilWebsocket) do
+		Function_16.Name = "Function"
+		Function_16.BackgroundColor3 = Color3.new(1,1,1)
+		Function_16.BackgroundTransparency = 1
+		Function_16.BorderColor3 = Color3.new(0,0,0)
+		Function_16.BorderSizePixel = 0
+		Function_16.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Function_16.Position = UDim2.new(0.024,0,0.088,0)
+		Function_16.Size = UDim2.new(0.646,0,0.81,0)
+		Function_16.Text = "Brazil"
+		Function_16.TextColor3 = Color3.new(1,1,1)
+		Function_16.TextScaled = true
+		Function_16.TextSize = 14
+		Function_16.TextWrapped = true
+		Function_16.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_26 = Instance.new("UITextSizeConstraint",Function_16) do
+		UITextSizeConstraint_26.MaxTextSize = 53
+	end
+	local UIStroke_60 = Instance.new("UIStroke",Function_16) do
+		UIStroke_60:SetAttribute("OriginalThickness",1)
+		UIStroke_60:AddTag("ScreenStroke")
+		UIStroke_60:AddTag("UIStroke")
+		UIStroke_60.Thickness = 0.942
+	end	
+	local Buttons_16 = Instance.new("Frame",BrazilWebsocket) do
+		Buttons_16.Name = "Buttons"
+		Buttons_16.AnchorPoint = Vector2.new(0.5,0.5)
+		Buttons_16.BackgroundColor3 = Color3.new(1,1,1)
+		Buttons_16.BackgroundTransparency = 1
+		Buttons_16.BorderColor3 = Color3.new(0,0,0)
+		Buttons_16.BorderSizePixel = 0
+		Buttons_16.Position = UDim2.new(0.827,0,0.483,0)
+		Buttons_16.Size = UDim2.new(0.284,0,0.746,0)
+	end
+	
+	local Button_9 = Instance.new("ImageButton",Buttons_16) do
+		Button_9.Name = "Button"
+		Button_9.AnchorPoint = Vector2.new(0.5,0.5)
+		Button_9.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+		Button_9.BorderColor3 = Color3.new(0,0,0)
+		Button_9.BorderSizePixel = 0
+		Button_9.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Button_9.ImageTransparency = 1
+		Button_9.Position = UDim2.new(0.5,0,0.5,0)
+		Button_9.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Text_16 = Instance.new("TextLabel",Button_9) do
+		Text_16.Name = "Text"
+		Text_16.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_16.BackgroundColor3 = Color3.new(1,1,1)
+		Text_16.BackgroundTransparency = 1
+		Text_16.BorderColor3 = Color3.new(0,0,0)
+		Text_16.BorderSizePixel = 0
+		Text_16.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_16.Position = UDim2.new(0.5,0,0.5,0)
+		Text_16.Size = UDim2.new(1,0,0.9,0)
+		Text_16.Text = "Connect"
+		Text_16.TextColor3 = Color3.new(1,1,1)
+		Text_16.TextScaled = true
+		Text_16.TextSize = 14
+		Text_16.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_27 = Instance.new("UITextSizeConstraint",Text_16) do
+		UITextSizeConstraint_27.MaxTextSize = 67
+	end
+	local UIStroke_61 = Instance.new("UIStroke",Text_16) do
+		UIStroke_61:SetAttribute("OriginalThickness",1.5)
+		UIStroke_61:AddTag("ScreenStroke")
+		UIStroke_61:AddTag("UIStroke")
+		UIStroke_61.Color = Color3.new(0.008,0.22,0)
+		UIStroke_61.Thickness = 1.413
+	end	
+	local UIStroke_62 = Instance.new("UIStroke",Button_9) do
+		UIStroke_62:SetAttribute("OriginalThickness",1.5)
+		UIStroke_62:AddTag("ScreenStroke")
+		UIStroke_62:AddTag("UIStroke")
+		UIStroke_62.Color = Color3.new(0,0.255,0.027)
+		UIStroke_62.Thickness = 1.413
+	end			
+	local AtlantaWebsocket = Instance.new("Frame",Config_1) do
+		AtlantaWebsocket.Name = "AtlantaWebsocket"
+		AtlantaWebsocket.BackgroundColor3 = Color3.new(0,0,0)
+		AtlantaWebsocket.BackgroundTransparency = 0.5
+		AtlantaWebsocket.BorderColor3 = Color3.new(0,0,0)
+		AtlantaWebsocket.BorderSizePixel = 0
+		AtlantaWebsocket.LayoutOrder = 1
+		AtlantaWebsocket.Position = UDim2.new(0.021,0,0,0)
+		AtlantaWebsocket.Size = UDim2.new(0.916,0,0.181,0)
+	end
+	
+	local Function_17 = Instance.new("TextLabel",AtlantaWebsocket) do
+		Function_17.Name = "Function"
+		Function_17.BackgroundColor3 = Color3.new(1,1,1)
+		Function_17.BackgroundTransparency = 1
+		Function_17.BorderColor3 = Color3.new(0,0,0)
+		Function_17.BorderSizePixel = 0
+		Function_17.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Function_17.Position = UDim2.new(0.022,0,0.125,0)
+		Function_17.Size = UDim2.new(0.594,0,0.731,0)
+		Function_17.Text = "Atlanta"
+		Function_17.TextColor3 = Color3.new(1,1,1)
+		Function_17.TextScaled = true
+		Function_17.TextSize = 14
+		Function_17.TextWrapped = true
+		Function_17.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_28 = Instance.new("UITextSizeConstraint",Function_17) do
+		UITextSizeConstraint_28.MaxTextSize = 53
+	end
+	local UIStroke_63 = Instance.new("UIStroke",Function_17) do
+		UIStroke_63:SetAttribute("OriginalThickness",1)
+		UIStroke_63:AddTag("ScreenStroke")
+		UIStroke_63:AddTag("UIStroke")
+		UIStroke_63.Thickness = 0.942
+	end	
+	local Buttons_17 = Instance.new("Frame",AtlantaWebsocket) do
+		Buttons_17.Name = "Buttons"
+		Buttons_17.AnchorPoint = Vector2.new(0.5,0.5)
+		Buttons_17.BackgroundColor3 = Color3.new(1,1,1)
+		Buttons_17.BackgroundTransparency = 1
+		Buttons_17.BorderColor3 = Color3.new(0,0,0)
+		Buttons_17.BorderSizePixel = 0
+		Buttons_17.Interactable = false
+		Buttons_17.Position = UDim2.new(0.827,0,0.483,0)
+		Buttons_17.Size = UDim2.new(0.284,0,0.746,0)
+	end
+	
+	local Button_10 = Instance.new("ImageButton",Buttons_17) do
+		Button_10.Name = "Button"
+		Button_10.AnchorPoint = Vector2.new(0.5,0.5)
+		Button_10.BackgroundColor3 = Color3.new(0.49,0.435,0.435)
+		Button_10.BorderColor3 = Color3.new(0,0,0)
+		Button_10.BorderSizePixel = 0
+		Button_10.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Button_10.ImageTransparency = 1
+		Button_10.Position = UDim2.new(0.5,0,0.5,0)
+		Button_10.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Text_17 = Instance.new("TextLabel",Button_10) do
+		Text_17.Name = "Text"
+		Text_17.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_17.BackgroundColor3 = Color3.new(1,1,1)
+		Text_17.BackgroundTransparency = 1
+		Text_17.BorderColor3 = Color3.new(0,0,0)
+		Text_17.BorderSizePixel = 0
+		Text_17.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_17.Position = UDim2.new(0.5,0,0.5,0)
+		Text_17.Size = UDim2.new(1,0,0.9,0)
+		Text_17.Text = "Connect"
+		Text_17.TextColor3 = Color3.new(1,1,1)
+		Text_17.TextScaled = true
+		Text_17.TextSize = 14
+		Text_17.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_29 = Instance.new("UITextSizeConstraint",Text_17) do
+		UITextSizeConstraint_29.MaxTextSize = 67
+	end
+	local UIStroke_64 = Instance.new("UIStroke",Text_17) do
+		UIStroke_64:SetAttribute("OriginalThickness",1.5)
+		UIStroke_64:AddTag("ScreenStroke")
+		UIStroke_64:AddTag("UIStroke")
+		UIStroke_64.Color = Color3.new(0.008,0.22,0)
+		UIStroke_64.Thickness = 1.413
+	end	
+	local UIStroke_65 = Instance.new("UIStroke",Button_10) do
+		UIStroke_65:SetAttribute("OriginalThickness",1.5)
+		UIStroke_65:AddTag("ScreenStroke")
+		UIStroke_65:AddTag("UIStroke")
+		UIStroke_65.Color = Color3.new(0,0.255,0.027)
+		UIStroke_65.Thickness = 1.413
+	end		
+	local Locked = Instance.new("Frame",AtlantaWebsocket) do
+		Locked.Name = "Locked"
+		Locked.BackgroundColor3 = Color3.new(0,0,0)
+		Locked.BackgroundTransparency = 0.5
+		Locked.BorderColor3 = Color3.new(0,0,0)
+		Locked.BorderSizePixel = 0
+		Locked.Size = UDim2.new(1,0,1,0)
+	end
+	
+	local Function_18 = Instance.new("TextLabel",Locked) do
+		Function_18.Name = "Function"
+		Function_18.BackgroundColor3 = Color3.new(1,1,1)
+		Function_18.BackgroundTransparency = 1
+		Function_18.BorderColor3 = Color3.new(0,0,0)
+		Function_18.BorderSizePixel = 0
+		Function_18.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Medium,Enum.FontStyle.Normal)
+		Function_18.Position = UDim2.new(0.325,0,0.069,0)
+		Function_18.Size = UDim2.new(0.35,0,0.81,0)
+		Function_18.Text = "This location is currently not avaliable to connect to."
+		Function_18.TextColor3 = Color3.new(1,1,1)
+		Function_18.TextScaled = true
+		Function_18.TextSize = 14
+		Function_18.TextWrapped = true
+		Function_18.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UITextSizeConstraint_30 = Instance.new("UITextSizeConstraint",Function_18) do
+		UITextSizeConstraint_30.MaxTextSize = 53
+	end
+	local UIStroke_66 = Instance.new("UIStroke",Function_18) do
+		UIStroke_66:SetAttribute("OriginalThickness",1)
+		UIStroke_66:AddTag("ScreenStroke")
+		UIStroke_66:AddTag("UIStroke")
+		UIStroke_66.Thickness = 0.942
+	end			
+	local Divider = Instance.new("Frame",Config_1) do
+		Divider.Name = "Divider"
+		Divider.BackgroundColor3 = Color3.new(1,1,1)
+		Divider.BackgroundTransparency = 0.5
+		Divider.BorderColor3 = Color3.new(0,0,0)
+		Divider.BorderSizePixel = 0
+		Divider.LayoutOrder = 3
+		Divider.Position = UDim2.new(0.042,0,0.046,0)
+		Divider.Size = UDim2.new(0.916,0,0.003,0)
+	end
+	local Divider_1 = Instance.new("Frame",Config_1) do
+		Divider_1.Name = "Divider"
+		Divider_1.BackgroundColor3 = Color3.new(1,1,1)
+		Divider_1.BackgroundTransparency = 0.5
+		Divider_1.BorderColor3 = Color3.new(0,0,0)
+		Divider_1.BorderSizePixel = 0
+		Divider_1.Position = UDim2.new(0.038,0,0.089,0)
+		Divider_1.Size = UDim2.new(0.365,0,0.002,0)
+	end
+	local Divider_2 = Instance.new("Frame",Config_1) do
+		Divider_2.Name = "Divider"
+		Divider_2.BackgroundColor3 = Color3.new(1,1,1)
+		Divider_2.BackgroundTransparency = 0.5
+		Divider_2.BorderColor3 = Color3.new(0,0,0)
+		Divider_2.BorderSizePixel = 0
+		Divider_2.LayoutOrder = -1
+		Divider_2.Position = UDim2.new(0.042,0,0.046,0)
+		Divider_2.Size = UDim2.new(0.916,0,0.003,0)
+	end
+	local Divider_3 = Instance.new("Frame",Config_1) do
+		Divider_3.Name = "Divider"
+		Divider_3.BackgroundColor3 = Color3.new(1,1,1)
+		Divider_3.BackgroundTransparency = 0.5
+		Divider_3.BorderColor3 = Color3.new(0,0,0)
+		Divider_3.BorderSizePixel = 0
+		Divider_3.LayoutOrder = 5
+		Divider_3.Position = UDim2.new(0.042,0,0.046,0)
+		Divider_3.Size = UDim2.new(0.916,0,0.003,0)
+	end
+	local BrainrotList = Instance.new("Frame",Content) do
+		BrainrotList:SetAttribute("Type","Allowed")
+		BrainrotList.Name = "BrainrotList"
+		BrainrotList.BackgroundColor3 = Color3.new(0,0,0)
+		BrainrotList.BackgroundTransparency = 0.5
+		BrainrotList.BorderColor3 = Color3.new(0,0,0)
+		BrainrotList.BorderSizePixel = 0
+		BrainrotList.Position = UDim2.new(1.006,0,0.103,0)
+		BrainrotList.Size = UDim2.new(0.362,0,0.902,0)
+		BrainrotList.Visible = false
+	end
+	
+	local BrainrotList_1 = Instance.new("ScrollingFrame",BrainrotList) do
+		BrainrotList_1.Name = "BrainrotList"
+		BrainrotList_1.AnchorPoint = Vector2.new(0.5,0.5)
+		BrainrotList_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+		BrainrotList_1.BackgroundColor3 = Color3.new(1,1,1)
+		BrainrotList_1.BackgroundTransparency = 1
+		BrainrotList_1.BorderColor3 = Color3.new(0,0,0)
+		BrainrotList_1.BorderSizePixel = 0
+		BrainrotList_1.CanvasSize = UDim2.new(0,0,1,0)
+		BrainrotList_1.Position = UDim2.new(0.499,0,0.497,0)
+		BrainrotList_1.ScrollBarImageColor3 = Color3.new(0,0,0)
+		BrainrotList_1.ScrollBarThickness = 0
+		BrainrotList_1.ScrollingDirection = Enum.ScrollingDirection.Y
+		BrainrotList_1.Size = UDim2.new(1.003,0,0.994,0)
+	end
+	
+	local UIListLayout_4 = Instance.new("UIListLayout",BrainrotList_1) do
+		UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout_4.Padding = UDim.new(0.023,0)
+		UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+	end
+	local Padding_3 = Instance.new("Frame",BrainrotList_1) do
+		Padding_3.Name = "Padding"
+		Padding_3.AnchorPoint = Vector2.new(0.5,0.5)
+		Padding_3.BackgroundColor3 = Color3.new(1,1,1)
+		Padding_3.BackgroundTransparency = 1
+		Padding_3.BorderColor3 = Color3.new(0,0,0)
+		Padding_3.BorderSizePixel = 0
+		Padding_3.LayoutOrder = -99
+		Padding_3.Position = UDim2.new(0.045,0,0.112,0)
+		Padding_3.Size = UDim2.new(1,0,0,0)
+	end
+	local Template_2 = Instance.new("ImageButton",BrainrotList_1) do
+		Template_2.Name = "Template"
+		Template_2.AnchorPoint = Vector2.new(0.5,0.5)
+		Template_2.BackgroundColor3 = Color3.new(0,0,0)
+		Template_2.BackgroundTransparency = 0.4
+		Template_2.BorderColor3 = Color3.new(0,0,0)
+		Template_2.BorderSizePixel = 0
+		Template_2.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Template_2.ImageTransparency = 1
+		Template_2.Position = UDim2.new(0.5,0,0.098,0)
+		Template_2.Size = UDim2.new(0.915,0,0.151,0)
+		Template_2.Visible = false
+	end
+	
+	local UIStroke_67 = Instance.new("UIStroke",Template_2)
+	local BrainrotBg_1 = Instance.new("ImageLabel",Template_2) do
+		BrainrotBg_1.Name = "BrainrotBg"
+		BrainrotBg_1.AnchorPoint = Vector2.new(0,0.5)
+		BrainrotBg_1.BackgroundColor3 = Color3.new(0,0,0)
+		BrainrotBg_1.BackgroundTransparency = 0.5
+		BrainrotBg_1.BorderColor3 = Color3.new(0,0,0)
+		BrainrotBg_1.BorderSizePixel = 0
+		BrainrotBg_1.LayoutOrder = 2
+		BrainrotBg_1.Position = UDim2.new(0.02,0,0.483,0)
+		BrainrotBg_1.ScaleType = Enum.ScaleType.Fit
+		BrainrotBg_1.Size = UDim2.new(0.321,0,0.715,0)
+		BrainrotBg_1.ZIndex = 2
+	end
+	
+	local UIStroke_68 = Instance.new("UIStroke",BrainrotBg_1) do
+		UIStroke_68.Color = Color3.new(1,1,1)
+	end
+	local ViewportFrame_3 = Instance.new("ViewportFrame",BrainrotBg_1) do
+		ViewportFrame_3.Ambient = Color3.new(1,1,1)
+		ViewportFrame_3.AnchorPoint = Vector2.new(0.5,0.5)
+		ViewportFrame_3.BackgroundColor3 = Color3.new(0,0,0)
+		ViewportFrame_3.BackgroundTransparency = 1
+		ViewportFrame_3.BorderColor3 = Color3.new(0,0,0)
+		ViewportFrame_3.BorderSizePixel = 0
+		ViewportFrame_3.LightColor = Color3.new(1,1,1)
+		ViewportFrame_3.Position = UDim2.new(0.5,0,0.5,0)
+		ViewportFrame_3.Size = UDim2.new(1,0,1,0)
+	end	
+	local NameLabel_2 = Instance.new("TextLabel",Template_2) do
+		NameLabel_2.Name = "NameLabel"
+		NameLabel_2.AnchorPoint = Vector2.new(0.5,0.5)
+		NameLabel_2.BackgroundColor3 = Color3.new(1,1,1)
+		NameLabel_2.BackgroundTransparency = 1
+		NameLabel_2.BorderColor3 = Color3.new(0,0,0)
+		NameLabel_2.BorderSizePixel = 0
+		NameLabel_2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		NameLabel_2.LayoutOrder = 1
+		NameLabel_2.Position = UDim2.new(0.709,0,0.493,0)
+		NameLabel_2.Size = UDim2.new(0.567,0,0.249,0)
+		NameLabel_2.Text = "{DisplayName}"
+		NameLabel_2.TextColor3 = Color3.new(1,1,1)
+		NameLabel_2.TextScaled = true
+		NameLabel_2.TextSize = 14
+		NameLabel_2.TextWrapped = true
+		NameLabel_2.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_69 = Instance.new("UIStroke",NameLabel_2) do
+		UIStroke_69.Thickness = 2
+	end			
+	local NameLabel_3 = Instance.new("TextLabel",BrainrotList) do
+		NameLabel_3.Name = "NameLabel"
+		NameLabel_3.AnchorPoint = Vector2.new(0.5,0.5)
+		NameLabel_3.BackgroundColor3 = Color3.new(1,1,1)
+		NameLabel_3.BackgroundTransparency = 1
+		NameLabel_3.BorderColor3 = Color3.new(0,0,0)
+		NameLabel_3.BorderSizePixel = 0
+		NameLabel_3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		NameLabel_3.LayoutOrder = 1
+		NameLabel_3.Position = UDim2.new(0.502,0,-0.122,0)
+		NameLabel_3.Size = UDim2.new(0.567,0,0.249,0)
+		NameLabel_3.Text = "Select Brainrots"
+		NameLabel_3.TextColor3 = Color3.new(1,1,1)
+		NameLabel_3.TextScaled = true
+		NameLabel_3.TextSize = 14
+		NameLabel_3.TextWrapped = true
+		NameLabel_3.TextXAlignment = Enum.TextXAlignment.Left
+	end
+	
+	local UIStroke_70 = Instance.new("UIStroke",NameLabel_3) do
+		UIStroke_70.Thickness = 2
+	end	
+	local Confirm = Instance.new("ImageButton",BrainrotList) do
+		Confirm.Name = "Confirm"
+		Confirm.AnchorPoint = Vector2.new(0.5,0.5)
+		Confirm.BackgroundColor3 = Color3.new(0.192,0.639,0)
+		Confirm.BorderColor3 = Color3.new(0,0,0)
+		Confirm.BorderSizePixel = 0
+		Confirm.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+		Confirm.ImageTransparency = 1
+		Confirm.Position = UDim2.new(0.254,0,1.101,0)
+		Confirm.Size = UDim2.new(0.394,0,0.136,0)
+	end
+	
+	local UIStroke_71 = Instance.new("UIStroke",Confirm) do
+		UIStroke_71:SetAttribute("OriginalThickness",1.5)
+		UIStroke_71:AddTag("ScreenStroke")
+		UIStroke_71:AddTag("UIStroke")
+		UIStroke_71.Color = Color3.new(0,0.255,0.027)
+		UIStroke_71.Thickness = 1.413
+	end
+	local Text_18 = Instance.new("TextLabel",Confirm) do
+		Text_18.Name = "Text"
+		Text_18.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_18.BackgroundColor3 = Color3.new(1,1,1)
+		Text_18.BackgroundTransparency = 1
+		Text_18.BorderColor3 = Color3.new(0,0,0)
+		Text_18.BorderSizePixel = 0
+		Text_18.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_18.Position = UDim2.new(0.5,0,0.5,0)
+		Text_18.Size = UDim2.new(1,0,0.9,0)
+		Text_18.Text = "Confirm"
+		Text_18.TextColor3 = Color3.new(1,1,1)
+		Text_18.TextScaled = true
+		Text_18.TextSize = 14
+		Text_18.TextWrapped = true
+	end
+	
+	local UITextSizeConstraint_31 = Instance.new("UITextSizeConstraint",Text_18) do
+		UITextSizeConstraint_31.MaxTextSize = 67
+	end
+	local UIStroke_72 = Instance.new("UIStroke",Text_18) do
+		UIStroke_72:SetAttribute("OriginalThickness",1.5)
+		UIStroke_72:AddTag("ScreenStroke")
+		UIStroke_72:AddTag("UIStroke")
+		UIStroke_72.Color = Color3.new(0.008,0.22,0)
+		UIStroke_72.Thickness = 1.413
+	end		
 	local Cancel = Instance.new("ImageButton",BrainrotList) do
 		Cancel.Name = "Cancel"
 		Cancel.AnchorPoint = Vector2.new(0.5,0.5)
@@ -1868,40 +2798,40 @@ end
 		Cancel.Size = UDim2.new(0.394,0,0.136,0)
 	end
 	
-	local UIStroke_44 = Instance.new("UIStroke",Cancel) do
-		UIStroke_44:SetAttribute("OriginalThickness",1.5)
-		UIStroke_44:AddTag("ScreenStroke")
-		UIStroke_44:AddTag("UIStroke")
-		UIStroke_44.Color = Color3.new(0,0.255,0.027)
-		UIStroke_44.Thickness = 1.413
+	local UIStroke_73 = Instance.new("UIStroke",Cancel) do
+		UIStroke_73:SetAttribute("OriginalThickness",1.5)
+		UIStroke_73:AddTag("ScreenStroke")
+		UIStroke_73:AddTag("UIStroke")
+		UIStroke_73.Color = Color3.new(0,0.255,0.027)
+		UIStroke_73.Thickness = 1.413
 	end
-	local Text_11 = Instance.new("TextLabel",Cancel) do
-		Text_11.Name = "Text"
-		Text_11.AnchorPoint = Vector2.new(0.5,0.5)
-		Text_11.BackgroundColor3 = Color3.new(1,1,1)
-		Text_11.BackgroundTransparency = 1
-		Text_11.BorderColor3 = Color3.new(0,0,0)
-		Text_11.BorderSizePixel = 0
-		Text_11.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
-		Text_11.Position = UDim2.new(0.5,0,0.5,0)
-		Text_11.Size = UDim2.new(1,0,0.9,0)
-		Text_11.Text = "Cancel"
-		Text_11.TextColor3 = Color3.new(1,1,1)
-		Text_11.TextScaled = true
-		Text_11.TextSize = 14
-		Text_11.TextWrapped = true
+	local Text_19 = Instance.new("TextLabel",Cancel) do
+		Text_19.Name = "Text"
+		Text_19.AnchorPoint = Vector2.new(0.5,0.5)
+		Text_19.BackgroundColor3 = Color3.new(1,1,1)
+		Text_19.BackgroundTransparency = 1
+		Text_19.BorderColor3 = Color3.new(0,0,0)
+		Text_19.BorderSizePixel = 0
+		Text_19.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.ExtraBold,Enum.FontStyle.Normal)
+		Text_19.Position = UDim2.new(0.5,0,0.5,0)
+		Text_19.Size = UDim2.new(1,0,0.9,0)
+		Text_19.Text = "Cancel"
+		Text_19.TextColor3 = Color3.new(1,1,1)
+		Text_19.TextScaled = true
+		Text_19.TextSize = 14
+		Text_19.TextWrapped = true
 	end
 	
-	local UITextSizeConstraint_15 = Instance.new("UITextSizeConstraint",Text_11) do
-		UITextSizeConstraint_15.MaxTextSize = 67
+	local UITextSizeConstraint_32 = Instance.new("UITextSizeConstraint",Text_19) do
+		UITextSizeConstraint_32.MaxTextSize = 67
 	end
-	local UIStroke_45 = Instance.new("UIStroke",Text_11) do
-		UIStroke_45:SetAttribute("OriginalThickness",1.5)
-		UIStroke_45:AddTag("ScreenStroke")
-		UIStroke_45:AddTag("UIStroke")
-		UIStroke_45.Color = Color3.new(0.008,0.22,0)
-		UIStroke_45.Thickness = 1.413
-	end		
+	local UIStroke_74 = Instance.new("UIStroke",Text_19) do
+		UIStroke_74:SetAttribute("OriginalThickness",1.5)
+		UIStroke_74:AddTag("ScreenStroke")
+		UIStroke_74:AddTag("UIStroke")
+		UIStroke_74.Color = Color3.new(0.008,0.22,0)
+		UIStroke_74.Thickness = 1.413
+	end			
 	local Header = Instance.new("Frame",Main) do
 		Header.Name = "Header"
 		Header.AnchorPoint = Vector2.new(0.5,0)
@@ -1965,11 +2895,11 @@ end
 		Txt1.TextXAlignment = Enum.TextXAlignment.Left
 	end
 	
-	local UIStroke_46 = Instance.new("UIStroke",Txt1) do
-		UIStroke_46:SetAttribute("OriginalThickness",2)
-		UIStroke_46:AddTag("ScreenStroke")
-		UIStroke_46:AddTag("UIStroke")
-		UIStroke_46.Thickness = 1.476
+	local UIStroke_75 = Instance.new("UIStroke",Txt1) do
+		UIStroke_75:SetAttribute("OriginalThickness",2)
+		UIStroke_75:AddTag("ScreenStroke")
+		UIStroke_75:AddTag("UIStroke")
+		UIStroke_75.Thickness = 1.476
 	end	
 	local Txt2 = Instance.new("TextLabel",Txts) do
 		Txt2.Name = "Txt2"
@@ -1990,11 +2920,11 @@ end
 		Txt2.TextXAlignment = Enum.TextXAlignment.Left
 	end
 	
-	local UIStroke_47 = Instance.new("UIStroke",Txt2) do
-		UIStroke_47:SetAttribute("OriginalThickness",2)
-		UIStroke_47:AddTag("ScreenStroke")
-		UIStroke_47:AddTag("UIStroke")
-		UIStroke_47.Thickness = 1.476
+	local UIStroke_76 = Instance.new("UIStroke",Txt2) do
+		UIStroke_76:SetAttribute("OriginalThickness",2)
+		UIStroke_76:AddTag("ScreenStroke")
+		UIStroke_76:AddTag("UIStroke")
+		UIStroke_76.Thickness = 1.476
 	end		
 	local Close = Instance.new("ImageButton",Header) do
 		Close.Name = "Close"
@@ -2027,11 +2957,11 @@ end
 		Txt.TextWrapped = true
 	end
 	
-	local UIStroke_48 = Instance.new("UIStroke",Txt) do
-		UIStroke_48:SetAttribute("OriginalThickness",3)
-		UIStroke_48:AddTag("ScreenStroke")
-		UIStroke_48:AddTag("UIStroke")
-		UIStroke_48.Thickness = 2.214
+	local UIStroke_77 = Instance.new("UIStroke",Txt) do
+		UIStroke_77:SetAttribute("OriginalThickness",3)
+		UIStroke_77:AddTag("ScreenStroke")
+		UIStroke_77:AddTag("UIStroke")
+		UIStroke_77.Thickness = 2.214
 	end
 	local UIPadding = Instance.new("UIPadding",Txt) do
 		UIPadding.PaddingLeft = UDim.new(0.01,0)
@@ -2133,14 +3063,14 @@ end
 		Status.ZIndex = 2
 	end
 	
-	local UIStroke_49 = Instance.new("UIStroke",Status) do
-		UIStroke_49:SetAttribute("OriginalThickness",2)
-		UIStroke_49:AddTag("ScreenStroke")
-		UIStroke_49:AddTag("UIStroke")
-		UIStroke_49.Thickness = 1.476
+	local UIStroke_78 = Instance.new("UIStroke",Status) do
+		UIStroke_78:SetAttribute("OriginalThickness",2)
+		UIStroke_78:AddTag("ScreenStroke")
+		UIStroke_78:AddTag("UIStroke")
+		UIStroke_78.Thickness = 1.476
 	end
-	local UITextSizeConstraint_16 = Instance.new("UITextSizeConstraint",Status) do
-		UITextSizeConstraint_16.MaxTextSize = 33
+	local UITextSizeConstraint_33 = Instance.new("UITextSizeConstraint",Status) do
+		UITextSizeConstraint_33.MaxTextSize = 33
 	end	
 	local ConnectedDot = Instance.new("TextLabel",StatsAndStuff) do
 		ConnectedDot.Name = "ConnectedDot"
@@ -2160,14 +3090,14 @@ end
 		ConnectedDot.ZIndex = 2
 	end
 	
-	local UIStroke_50 = Instance.new("UIStroke",ConnectedDot) do
-		UIStroke_50:SetAttribute("OriginalThickness",2)
-		UIStroke_50:AddTag("ScreenStroke")
-		UIStroke_50:AddTag("UIStroke")
-		UIStroke_50.Thickness = 1.476
+	local UIStroke_79 = Instance.new("UIStroke",ConnectedDot) do
+		UIStroke_79:SetAttribute("OriginalThickness",2)
+		UIStroke_79:AddTag("ScreenStroke")
+		UIStroke_79:AddTag("UIStroke")
+		UIStroke_79.Thickness = 1.476
 	end
-	local UITextSizeConstraint_17 = Instance.new("UITextSizeConstraint",ConnectedDot) do
-		UITextSizeConstraint_17.MaxTextSize = 33
+	local UITextSizeConstraint_34 = Instance.new("UITextSizeConstraint",ConnectedDot) do
+		UITextSizeConstraint_34.MaxTextSize = 33
 	end	
 	local Autojoin = Instance.new("TextButton",StatsAndStuff) do
 		Autojoin:SetAttribute("Toggle",false)
@@ -2206,11 +3136,11 @@ end
 		TextLabel_3.TextWrapped = true
 	end
 	
-	local UIStroke_51 = Instance.new("UIStroke",TextLabel_3) do
-		UIStroke_51:SetAttribute("OriginalThickness",2)
-		UIStroke_51:AddTag("ScreenStroke")
-		UIStroke_51:AddTag("UIStroke")
-		UIStroke_51.Thickness = 1.476
+	local UIStroke_80 = Instance.new("UIStroke",TextLabel_3) do
+		UIStroke_80:SetAttribute("OriginalThickness",2)
+		UIStroke_80:AddTag("ScreenStroke")
+		UIStroke_80:AddTag("UIStroke")
+		UIStroke_80.Thickness = 1.476
 	end		
 	local UIGradient_7 = Instance.new("UIGradient",StatsAndStuff) do
 		UIGradient_7.Color = ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.new(0.796,0.569,0.286));ColorSequenceKeypoint.new(0.437,Color3.new(0.702,0.573,0.224));ColorSequenceKeypoint.new(1,Color3.new(0.51,0.392,0.098));})
@@ -2275,8 +3205,3 @@ end
 		labelorsum.TextWrapped = true
 	end	
 	end)()
-Meowl_Notifier.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-return Meowl_Notifier
-end
-
-CreateGui()
