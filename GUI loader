@@ -5,6 +5,8 @@ local Meowl_Notifier = Instance.new("ScreenGui") do
 	Meowl_Notifier.IgnoreGuiInset = true
 	Meowl_Notifier.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 	Meowl_Notifier.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Meowl_Notifier.ResetOnSpawn = false
+    Meowl_Notifier.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 end
 
 local Notifier = Instance.new("Frame",Meowl_Notifier) do
