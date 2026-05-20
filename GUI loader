@@ -1,12 +1,10 @@
---10.05.2026 - 16:08 : 58
+--20.05.2026 - 00:52 : 21
 
 local Meowl_Notifier = Instance.new("ScreenGui") do
 	Meowl_Notifier.Name = "Meowl Notifier"
 	Meowl_Notifier.IgnoreGuiInset = true
 	Meowl_Notifier.ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
 	Meowl_Notifier.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    Meowl_Notifier.ResetOnSpawn = false
-    Meowl_Notifier.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 end
 
 local Notifier = Instance.new("Frame",Meowl_Notifier) do
@@ -670,7 +668,6 @@ local NoLogs = Instance.new("Frame",Logs_1) do
 	NoLogs.LayoutOrder = -99
 	NoLogs.Position = UDim2.new(0.045,0,0.112,0)
 	NoLogs.Size = UDim2.new(1,0,1,0)
-	NoLogs.Visible = false
 end
 
 local ViewportFrame_2 = Instance.new("ViewportFrame",NoLogs) do
@@ -2481,12 +2478,12 @@ end
 	end	
 	local Buttons_17 = Instance.new("Frame",AtlantaWebsocket) do
 		Buttons_17.Name = "Buttons"
+		Buttons_17.Active = true
 		Buttons_17.AnchorPoint = Vector2.new(0.5,0.5)
 		Buttons_17.BackgroundColor3 = Color3.new(1,1,1)
 		Buttons_17.BackgroundTransparency = 1
 		Buttons_17.BorderColor3 = Color3.new(0,0,0)
 		Buttons_17.BorderSizePixel = 0
-		Buttons_17.Interactable = false
 		Buttons_17.Position = UDim2.new(0.827,0,0.483,0)
 		Buttons_17.Size = UDim2.new(0.284,0,0.746,0)
 	end
@@ -2544,6 +2541,7 @@ end
 		Locked.BorderColor3 = Color3.new(0,0,0)
 		Locked.BorderSizePixel = 0
 		Locked.Size = UDim2.new(1,0,1,0)
+		Locked.Visible = false
 	end
 	
 	local Function_18 = Instance.new("TextLabel",Locked) do
